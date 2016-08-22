@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Furnace
+  - Tree
+  - Stone
+  - dirt
+  - UICanvas
+  - InvCraftTag
+  - Floor
+  - PilarMadera
+  - Door
+  - ParedMadera
+  - Techo
+  - SueloMadera
+  - Pared
+  - Pilar
+  - TechoPos
+  - HuecoPuertaPos
+  - SueloPos
+  - ParedMaderaPuerta
+  - EscaleraPos
+  - PilarMaderaSpawn
+  - PuertaSpawn
+  - ParedMaderaSpawn
+  - SueloSpawn
+  - Campfire
+  - Building
+  - Item
+  - CraftingTable
+  - Sleep
+  - Tools
+  - Berry
+  - Ally
+  - Enemy
+  - Stats
+  - DamagePanel
+  - DeadPanel
+  - RoofPos
+  - Manager
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Tools
+  - Suimono_Water
+  - Suimono_Depth
+  - Suimono_Screen
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

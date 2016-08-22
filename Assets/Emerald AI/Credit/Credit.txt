@@ -1,0 +1,5 @@
+AI models and textures are from Unity's Demo (Unity 5 Survival Shooter) here: https://www.assetstore.unity3d.com/en/#!/content/40756
+
+Tree models and textures are from Unity's African Tree pack.
+
+Sword model is from Alex Lusth's sword model pack found here: https://www.assetstore.unity3d.com/en/#!/content/7056
