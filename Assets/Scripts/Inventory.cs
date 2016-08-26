@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
@@ -32,48 +30,6 @@ public class Inventory : MonoBehaviour
     public GameObject flashlightGO;
 
     public Transform invWindow;
-
-    /*
-    public List<Item> itemss = new List<Item>();
-
-    [System.Serializable]
-    public class Item
-    {
-        public int id;
-        public int count;
-        public string name;
-        public string description;
-        public Texture2D icon;
-        public ItemType type;
-
-        public enum ItemType
-        {
-            Standard,
-            Equipable,
-            Consumable
-        }
-
-        public Item(string nam, int ide, string desc, ItemType typ)
-        {
-            name = nam;
-            id = ide;
-            description = desc;
-            type = typ;
-            icon = Resources.Load<Texture2D>("Item Icons/" + nam);
-        }
-
-        public Item()
-        {
-
-        }
-    }
-
-    void Start()
-    {
-        itemss.Add(new Item("Log", 0, "Wooden Log.", Item.ItemType.Standard));
-        itemss.Add(new Item("Stone", 1, "Stone.", Item.ItemType.Standard));
-    }
-    */
 
     public void Equip(int itemID)
     {
@@ -177,16 +133,6 @@ public class Inventory : MonoBehaviour
                     build.key = false;
                 }
                 buildingScript.buildings[1].key = true;
-                /*
-                buildingScript.buildings[0].key = false;
-                buildingScript.buildings[1].key = true;
-                buildingScript.buildings[2].key = false;
-                buildingScript.buildings[3].key = false;
-                buildingScript.buildings[4].key = false;
-                buildingScript.buildings[5].key = false;
-                buildingScript.buildings[6].key = false;
-                buildingScript.buildings[7].key = false;
-                */
             }
         }
         else if (itemID == 6) //Wall
