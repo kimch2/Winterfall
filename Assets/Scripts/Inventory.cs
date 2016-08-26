@@ -305,9 +305,6 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //public GameObject canvas;
-    //public GameObject emptyItem;
-
     void Update()
     {
         if(inventoryWindow.activeSelf)
@@ -336,15 +333,6 @@ public class Inventory : MonoBehaviour
                 craftingWindow.SetActive(true);
                 foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;
                 CursorControll.UnlockCursor();
-
-                /*
-                foreach (Item itm in itemss)
-                {
-                    GameObject itemGO = Instantiate(emptyItem, new Vector2(0, 0), Quaternion.identity) as GameObject;
-                    itemGO.transform.SetParent(canvas.transform, false);
-                    if(itemGO != null) itemGO.GetComponent<Text>().text = itm.count.ToString();
-                }
-                */
             }
         }
     }
