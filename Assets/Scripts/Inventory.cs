@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-
     public GameObject inventoryWindow;
     public GameObject smeltingWindow;
     public GameObject tier2CraftingWindow;
@@ -34,6 +33,7 @@ public class Inventory : MonoBehaviour
 
     public Transform invWindow;
 
+    /*
     public List<Item> itemss = new List<Item>();
 
     [System.Serializable]
@@ -73,6 +73,7 @@ public class Inventory : MonoBehaviour
         itemss.Add(new Item("Log", 0, "Wooden Log.", Item.ItemType.Standard));
         itemss.Add(new Item("Stone", 1, "Stone.", Item.ItemType.Standard));
     }
+    */
 
     public void Equip(int itemID)
     {
@@ -358,11 +359,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public GameObject canvas;
-    public GameObject emptyItem;
+    //public GameObject canvas;
+    //public GameObject emptyItem;
 
     void Update()
     {
+        if(inventoryWindow.activeSelf)
+        foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
+
         levelText.text = "XP: " + xp;
 
         if (flashlightGO.activeSelf)
@@ -387,12 +391,14 @@ public class Inventory : MonoBehaviour
                 foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;
                 CursorControll.UnlockCursor();
 
+                /*
                 foreach (Item itm in itemss)
                 {
                     GameObject itemGO = Instantiate(emptyItem, new Vector2(0, 0), Quaternion.identity) as GameObject;
                     itemGO.transform.SetParent(canvas.transform, false);
                     if(itemGO != null) itemGO.GetComponent<Text>().text = itm.count.ToString();
                 }
+                */
             }
         }
     }
@@ -412,9 +418,11 @@ public class Inventory : MonoBehaviour
 
     public void CloseAllWindows()
     {
+        /*
         var children = new List<GameObject>();
         foreach (Transform child in invWindow) children.Add(child.gameObject);
         children.ForEach(child => Destroy(child));
+        */
 
         smeltingWindow.SetActive(false);
         tier2CraftingWindow.SetActive(false);
