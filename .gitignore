@@ -46,32 +46,39 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Auto-generated VS solution and project files
-ExportedObj/
-.consulo/
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.meta
-.vs/
-
-# Unity3D Generated File On Crash Reports
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+/[Ll]ibrary/
 sysinfo.txt
-
-# Builds
-*.apk
-*.unitypackage
-
-# Unity generated
-Temp/
-Obj/
-UnityGenerated/
-Library/
-Assets/AssetStoreTools*
+*.stackdump
+ 
+# ============================================= #
+# Visual Studio / MonoDevelop / Rider generated #
+# ============================================= #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+/.idea*/
+*.meta
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+[Dd]esktop.ini
