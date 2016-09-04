@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-[RequireComponent (typeof (NavMeshAgent))]
+[RequireComponent (typeof (UnityEngine.AI.NavMeshAgent))]
 [RequireComponent (typeof (BoxCollider))]
 [RequireComponent (typeof (Rigidbody))]
 [RequireComponent (typeof (AudioSource))]
@@ -66,7 +66,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 	
 	public bool isFleeing = false;
 	public bool isGrazing = false;
-	private NavMeshAgent navMeshAgent;
+	private UnityEngine.AI.NavMeshAgent navMeshAgent;
 	private float timer = 0;
 	private int grazeLength = 10;
 	private Vector3 startPosition;
@@ -430,7 +430,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 	void Start () 
 	{
 		//Apply and modify needed components on Start
-		navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+		navMeshAgent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
 		triggerCollider = GetComponentInChildren<SphereCollider>();
 		boxCollider = GetComponent<BoxCollider>();
 		gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -874,7 +874,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 				navMeshAgent.SetDestination(destination);
 			}
 
-			if (!navMeshAgent.hasPath && stuck == 1 || navMeshAgent.isPathStale && stuck == 1 || navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid && stuck == 1 || navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial && stuck == 1)
+			if (!navMeshAgent.hasPath && stuck == 1 || navMeshAgent.isPathStale && stuck == 1 || navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathInvalid && stuck == 1 || navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathPartial && stuck == 1)
 			{
 				navMeshAgent.Stop();
 				navMeshAgent.ResetPath();
@@ -892,7 +892,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 			}
 
 			//If our path isn't blocked, continuously generate waypoints when within distance of 15 units or less.
-			if (navMeshAgent.hasPath && stuck == 1 || !navMeshAgent.isPathStale && stuck == 1 || navMeshAgent.pathStatus != NavMeshPathStatus.PathInvalid && stuck == 1 || navMeshAgent.pathStatus != NavMeshPathStatus.PathPartial && stuck == 1)
+			if (navMeshAgent.hasPath && stuck == 1 || !navMeshAgent.isPathStale && stuck == 1 || navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathInvalid && stuck == 1 || navMeshAgent.pathStatus != UnityEngine.AI.NavMeshPathStatus.PathPartial && stuck == 1)
 			{
 				if (Vector3.Distance(transform.position, destination) < 15)
 				{
@@ -1030,7 +1030,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 	}
 	
 	//Draws our path lines
-	public void DrawPath(NavMeshPath path)
+	public void DrawPath(UnityEngine.AI.NavMeshPath path)
 	{
 		if (drawPaths)
 		{
@@ -1372,7 +1372,7 @@ public class Emerald_Animal_AI : MonoBehaviour
 		//Draw our current waypoint path, if drawPaths is enabled.
 		if (drawPaths)
 		{
-			NavMeshPath path = new NavMeshPath();
+			UnityEngine.AI.NavMeshPath path = new UnityEngine.AI.NavMeshPath();
 			navMeshAgent.CalculatePath(currentWaypoint.transform.position, path);
 			GetPath();
 		}

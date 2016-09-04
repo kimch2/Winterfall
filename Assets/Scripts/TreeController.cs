@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TreeController : MonoBehaviour {
-
+public class TreeController : MonoBehaviour
+{
     public int health;
 
-    public GameObject prefab1;
-    public GameObject prefab2;
-    Rigidbody rb;
+    public GameObject log;
+    public GameObject apple;
+    public GameObject sapling;
+    private Rigidbody rb;
 
-    void Start () {
+    void Start()
+    {
         rb = GetComponent<Rigidbody>();
     }
 
@@ -28,42 +30,39 @@ public class TreeController : MonoBehaviour {
         yield return new WaitForSeconds(7);
         Destroy(gameObject);
 
-        int outcome = Random.Range(0, 3);
-
-        if (outcome == 0)
+        switch (Random.Range(0, 4))
         {
-            GameObject log1 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject log2 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject apple = (GameObject)Instantiate(prefab2, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+            case 0: // 2 Logs, 1 Apple
+                GameObject log1_0 = Instantiate(log, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+                GameObject log2_0 = Instantiate(log, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+                GameObject apple1_0 = Instantiate(apple, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
 
-            log1.transform.rotation = Random.rotation;
-            log2.transform.rotation = Random.rotation;
-            apple.transform.rotation = Random.rotation;
-            log1.name = log2.name = "Log";
-            apple.name = "Apple";
+                log1_0.name = log2_0.name = "Log";
+                apple1_0.name = "Apple";
+                break;
 
-            Debug.Log("1");
-        }
-        if (outcome == 1)
-        {
-            GameObject newViking1 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject newViking2 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+            case 1: // 2 Logs
+                GameObject log1_1 = Instantiate(log, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+                GameObject log2_1 = Instantiate(log, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
 
-            newViking1.transform.rotation = Random.rotation;
-            newViking2.transform.rotation = Random.rotation;
-            newViking1.name = newViking2.name = "Log";
-            Debug.Log("2");
-        }
-        if (outcome == 2)
-        {
-            GameObject newViking1 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject newViking3 = (GameObject)Instantiate(prefab2, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+                log1_1.name = log2_1.name = "Log";
+                break;
 
-            newViking1.transform.rotation = Random.rotation;
-            newViking3.transform.rotation = Random.rotation;
-            newViking1.name = "Log";
-            newViking3.name = "Apple";
-            Debug.Log("3");
+            case 2: // 1 Log, 1 Apple
+                GameObject log1_2 = Instantiate(log, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+                GameObject apple1_2 = Instantiate(apple, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+
+                log1_2.name = "Log";
+                apple1_2.name = "Apple";
+                break;
+
+            case 3: // 1 Log, 1 Sapling
+                GameObject log1_3 = Instantiate(log, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+                GameObject sapling1_3 = Instantiate(sapling, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Random.rotation);
+
+                log1_3.name = "Log";
+                sapling1_3.name = "Sapling";
+                break;
         }
     }
 }

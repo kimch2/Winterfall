@@ -303,12 +303,27 @@ public class Inventory : MonoBehaviour
                 buildingScript.buildings[11].key = true;
             }
         }
+        else if (itemID == 19) //Sapling
+        {
+            if (buildingScript.buildings[12].key)
+            {
+                buildingScript.buildings[12].key = false;
+            }
+            else
+            {
+                foreach (Building.BuildingsClass build in buildingScript.buildings)
+                {
+                    build.key = false;
+                }
+                buildingScript.buildings[12].key = true;
+            }
+        }
     }
 
     void Update()
     {
-        if(inventoryWindow.activeSelf)
-        foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
+        if (inventoryWindow.activeSelf)
+            foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
 
         levelText.text = "XP: " + xp;
 

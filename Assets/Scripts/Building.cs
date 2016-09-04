@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Building : MonoBehaviour {
+public class Building : MonoBehaviour
+{
 
     [System.Serializable]
     public class BuildingsClass
@@ -18,17 +19,6 @@ public class Building : MonoBehaviour {
 
     public LayerMask myLayerMask;
 
-    /* IDS
-     * 0 = Foundation
-     * 1 = Pillars
-     * 2 = Wall
-     * 3 = Doorway
-     * 4 = Door
-     * 5 = Stairs
-     * 6 = Ceiling
-     * 7 = Windows
-     */
-
     public GameObject player;
     public Inventory inv;
 
@@ -44,28 +34,16 @@ public class Building : MonoBehaviour {
             /*FOUNDATION*/
             if (buildings[0].building == false)
             {
-                //foundationSpawn.gameObject.SetActive(false);
                 buildings[0].spawn.gameObject.SetActive(false);
-                //suelomaderaspawn.GetComponent.<Renderer>().enabled = false;
             }
             if (buildings[0].building == false && inv.items[18].item >= 1 && buildings[0].key)
             {
                 buildings[0].spawn.gameObject.SetActive(true);
-                //suelomaderaspawn.GetComponent.<Renderer>().enabled = true;
-                foreach(BuildingsClass building in buildings)
+                foreach (BuildingsClass building in buildings)
                 {
                     building.building = false;
                 }
                 buildings[0].building = true;
-                /*
-                buildings[1].building = false;
-                buildings[2].building = false;
-                buildings[3].building = false;
-                buildings[4].building = false;
-                buildings[5].building = false;
-                buildings[6].building = false;
-                buildings[7].building = false;
-                */
             }
             else if (buildings[0].building == true && inv.items[18].item == 0)
             {
@@ -75,7 +53,6 @@ public class Building : MonoBehaviour {
             else if (buildings[0].building == true && buildings[0].key == false)
             {
                 buildings[0].spawn.gameObject.SetActive(false);
-                //suelomaderaspawn.GetComponent.<Renderer>().enabled = false;
                 buildings[0].building = false;
             }
             /********************************************************/
@@ -371,77 +348,113 @@ public class Building : MonoBehaviour {
             }
             /************************************************************/
 
-            //FOUNDATION
+            /*SAPLING*/
+            if (buildings[12].building == false)
+            {
+                buildings[12].spawn.gameObject.SetActive(false);
+            }
+            if (buildings[12].building == false && inv.items[30].item >= 1 && buildings[12].key)
+            {
+                buildings[12].spawn.gameObject.SetActive(true);
+                foreach (BuildingsClass building in buildings)
+                {
+                    building.building = false;
+                }
+                buildings[12].building = true;
+            }
+            else if (buildings[12].building == true && inv.items[30].item == 0)
+            {
+                buildings[12].spawn.gameObject.SetActive(false);
+                buildings[12].building = false;
+            }
+            else if (buildings[12].building == true && buildings[12].key == false)
+            {
+                buildings[12].spawn.gameObject.SetActive(false);
+                buildings[12].building = false;
+            }
+            /************************************************************/
+
+            //* HIT POINTS *//
+
+            //Foundation
             if (buildings[0].building == true)
             {
                 buildings[0].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
 
-            //PILLAR
+            //Pillar
             if (buildings[1].building == true)
             {
                 buildings[1].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + 2, hit.point.z);
             }
 
-            //WALL
+            //Wall
             if (buildings[2].building == true)
             {
                 buildings[2].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + 2, hit.point.z);
             }
 
-            //DOORWAY
+            //Doorway
             if (buildings[3].building == true)
             {
                 buildings[3].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + 2, hit.point.z);
             }
 
-            //DOOR
+            //Door
             if (buildings[4].building == true)
             {
                 buildings[4].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + 2, hit.point.z);
             }
 
-            //STAIRS
+            //Stairs
             if (buildings[5].building == true)
             {
                 buildings[5].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
 
-            //CEILING
+            //Ceiling
             if (buildings[6].building == true)
             {
                 buildings[6].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
 
-            //WINDOW
+            //Window
             if (buildings[7].building == true)
             {
                 buildings[7].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + 2, hit.point.z);
             }
 
-            //CRAFTING TABLE
+            //Crafting Table
             if (buildings[8].building == true)
             {
                 buildings[8].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + .75f, hit.point.z);
             }
 
-            //CAMPFIRE
+            //Campfire
             if (buildings[9].building == true)
             {
                 buildings[9].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
 
-            //BED
+            //Bed
             if (buildings[10].building == true)
             {
                 buildings[10].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
 
-            //ROOF
+            //Roof
             if (buildings[11].building == true)
             {
                 buildings[11].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
+
+            //Sapling
+            if (buildings[12].building == true)
+            {
+                buildings[12].spawn.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            }
+
+            //* What? *//
 
             if (hit.transform.tag == "RoofPos")
             {
@@ -453,6 +466,9 @@ public class Building : MonoBehaviour {
                 buildings[0].spawn.transform.position = hit.transform.position;
             }
 
+            //* ??? *//
+
+            //Foundation
             if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloPos")
             {
                 buildings[0].rend.material.color = new Color(0, 1, 0, 0.3f);
@@ -462,7 +478,8 @@ public class Building : MonoBehaviour {
                 buildings[0].rend.material.color = new Color(1, 0, 0, 0.5f);
             }
 
-            if (hit.transform.tag == "Floor") //Crafting Table
+            //Crafting Table
+            if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
             {
                 buildings[8].rend.material.color = new Color(0, 1, 0, 0.3f);
             }
@@ -471,7 +488,8 @@ public class Building : MonoBehaviour {
                 buildings[8].rend.material.color = new Color(1, 0, 0, 0.5f);
             }
 
-            if (hit.transform.tag == "Floor") //Campfire
+            //Campfire
+            if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
             {
                 buildings[9].rend.material.color = new Color(0, 1, 0, 0.3f);
             }
@@ -481,7 +499,7 @@ public class Building : MonoBehaviour {
             }
 
             //Bed
-            if (hit.transform.tag == "Floor")
+            if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
             {
                 buildings[10].rend.material.color = new Color(0, 1, 0, 0.3f);
             }
@@ -498,6 +516,16 @@ public class Building : MonoBehaviour {
             else
             {
                 buildings[11].rend.material.color = new Color(1, 0, 0, 0.5f);
+            }
+
+            //Sapling
+            if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
+            {
+                buildings[12].rend.material.color = new Color(0, 1, 0, 0.3f);
+            }
+            else
+            {
+                buildings[12].rend.material.color = new Color(1, 0, 0, 0.5f);
             }
 
             if (hit.transform.tag == "SueloMadera" || hit.transform.tag == "EscaleraPos" || hit.transform.tag == "Techo" || hit.transform.tag == "TechoPos")
@@ -569,8 +597,8 @@ public class Building : MonoBehaviour {
                 buildings[5].spawn.transform.position = hit.transform.position;
                 buildings[5].spawn.transform.rotation = hit.transform.rotation;
             }
-            
-            //Place Object
+
+            //* PLACE OBJECT *//
 
             //Foundation
             if (buildings[0].building == true && Input.GetMouseButtonDown(0))
@@ -624,30 +652,40 @@ public class Building : MonoBehaviour {
                 inv.items[25].item -= 1;
             }
 
-            if (buildings[8].building == true && hit.transform.tag == "Floor" && Input.GetMouseButtonDown(0))
-            {
-                Instantiate(buildings[8].prefab, buildings[8].spawn.transform.position, buildings[8].spawn.transform.rotation);
-                inv.items[26].item -= 1;
-            }
+            if (buildings[8].building == true && Input.GetMouseButtonDown(0))
+                if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
+                {
+                    Instantiate(buildings[8].prefab, buildings[8].spawn.transform.position, buildings[8].spawn.transform.rotation);
+                    inv.items[26].item -= 1;
+                }
 
-            if (buildings[9].building == true && hit.transform.tag == "Floor" && Input.GetMouseButtonDown(0))
-            {
-                Instantiate(buildings[9].prefab, buildings[9].spawn.transform.position, buildings[9].spawn.transform.rotation);
-                inv.items[27].item -= 1;
-            }
+            if (buildings[9].building == true && Input.GetMouseButtonDown(0))
+                if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
+                {
+                    Instantiate(buildings[9].prefab, buildings[9].spawn.transform.position, buildings[9].spawn.transform.rotation);
+                    inv.items[27].item -= 1;
+                }
 
             //Bed
-            if (buildings[10].building == true && hit.transform.tag == "Floor" && Input.GetMouseButtonDown(0))
-            {
-                Instantiate(buildings[10].prefab, buildings[10].spawn.transform.position, buildings[10].spawn.transform.rotation);
-                inv.items[28].item -= 1;
-            }
+            if (buildings[10].building == true && Input.GetMouseButtonDown(0))
+                if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
+                {
+                    Instantiate(buildings[10].prefab, buildings[10].spawn.transform.position, buildings[10].spawn.transform.rotation);
+                    inv.items[28].item -= 1;
+                }
 
             //Roof
             if (buildings[11].building == true && hit.transform.tag == "RoofPos" && Input.GetMouseButtonDown(0))
             {
                 Instantiate(buildings[11].prefab, buildings[11].spawn.transform.position, buildings[11].spawn.transform.rotation);
                 inv.items[29].item -= 1;
+            }
+
+            //Sapling
+            if (buildings[12].building == true && hit.transform.tag == "Floor" && Input.GetMouseButtonDown(0))
+            {
+                Instantiate(buildings[12].prefab, buildings[12].spawn.transform.position, buildings[12].spawn.transform.rotation);
+                inv.items[30].item -= 1;
             }
 
             //Destroy Object

@@ -433,7 +433,7 @@ public class Crafting : MonoBehaviour
     //Refill Canteen
     public void RefillCanteen()
     {
-        if (transform.position.y <= 20 && inv.items[7].item >= 1)
+        if (transform.position.y <= 15 && inv.items[7].item >= 1)
         {
             inv.items[7].item--;
             StartCoroutine(Time(8, "RefilledCanteen"));
