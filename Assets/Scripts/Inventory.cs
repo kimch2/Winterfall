@@ -31,6 +31,7 @@ public class Inventory : MonoBehaviour
 
     public Transform invWindow;
 
+    #region Equip
     public void Equip(int itemID)
     {
         if (itemID == 0) //Hatchet
@@ -65,7 +66,9 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Use 
     public void Use(int itemID)
     {
         if (itemID == 0) //Apple
@@ -319,6 +322,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+    #endregion
 
     void Update()
     {
@@ -352,6 +356,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    #region Window Manager
     public void OpenCampfire()
     {
         if (smeltingWindow.activeSelf) CloseAllWindows();
@@ -391,4 +396,5 @@ public class Inventory : MonoBehaviour
             CursorControll.UnlockCursor();
         }
     }
+    #endregion          
 }

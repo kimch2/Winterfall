@@ -427,7 +427,7 @@ public class Building : MonoBehaviour
             //Crafting Table
             if (buildings[8].building == true)
             {
-                buildings[8].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + .75f, hit.point.z);
+                buildings[8].spawn.transform.position = new Vector3(hit.point.x, hit.point.y + .5f, hit.point.z);
             }
 
             //Campfire
@@ -651,7 +651,8 @@ public class Building : MonoBehaviour
                 Instantiate(buildings[7].prefab, buildings[7].spawn.transform.position, buildings[7].spawn.transform.rotation);
                 inv.items[25].item -= 1;
             }
-
+            
+            //Crafting Table
             if (buildings[8].building == true && Input.GetMouseButtonDown(0))
                 if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
                 {
@@ -659,6 +660,7 @@ public class Building : MonoBehaviour
                     inv.items[26].item -= 1;
                 }
 
+            //Campfire
             if (buildings[9].building == true && Input.GetMouseButtonDown(0))
                 if (hit.transform.tag == "Floor" || hit.transform.tag == "SueloMadera")
                 {
