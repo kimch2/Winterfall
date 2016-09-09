@@ -16,7 +16,7 @@
     <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
-    <UnityVersion>5.5.0b1</UnityVersion>
+    <UnityVersion>5.5.0b2</UnityVersion>
     <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
@@ -195,6 +195,11 @@
     <None Include="Assets\Photon Unity Networking\Demos\MarcoPolo-Tutorial\marcopolo-readme.txt" />
     <None Include="Assets\Photon Unity Networking\changelog.txt" />
     <None Include="Assets\Photon Unity Networking\readme.txt" />
+    <None Include="Assets\Pine Trees\__pineTrees Shader\MyBark.shader" />
+    <None Include="Assets\Pine Trees\__pineTrees Shader\MyBarkOptimized.shader" />
+    <None Include="Assets\Pine Trees\__pineTrees Shader\Tree.cginc" />
+    <None Include="Assets\Pine Trees\__pineTrees Shader\TreeVertexLit.cginc" />
+    <None Include="Assets\Pine Trees\readme_pineTrees.txt" />
     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
     <None Include="Assets\Plugins\release_history.txt" />
     <None Include="Assets\SSAO Pro\Changelog.txt" />
@@ -311,11 +316,6 @@
     <None Include="Assets\Time of Day\Assets\Shaders\TOD_Clouds.cginc" />
     <None Include="Assets\Time of Day\Assets\Shaders\TOD_Scattering.cginc" />
     <None Include="Assets\ULogin System\PHP\crossdomain.xml" />
-    <None Include="Assets\pineTreesPackage\__pineTrees Shader\MyBark.shader" />
-    <None Include="Assets\pineTreesPackage\__pineTrees Shader\MyBarkOptimized.shader" />
-    <None Include="Assets\pineTreesPackage\__pineTrees Shader\Tree.cginc" />
-    <None Include="Assets\pineTreesPackage\__pineTrees Shader\TreeVertexLit.cginc" />
-    <None Include="Assets\pineTreesPackage\readme_pineTrees.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

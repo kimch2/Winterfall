@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using UnityStandardAssets.Water;
 
 public class Settings : MonoBehaviour {
 
@@ -10,10 +12,12 @@ public class Settings : MonoBehaviour {
     public TOD_Rays raysScript;
     public TOD_Shadows shadowsScript;
     public Antialiasing aa;
+    public WaterBase water;
 
     [Header("Objects")]
     public Dropdown qualitySettingsDropdown;
     public Dropdown renderDistanceDropdown;
+    public Dropdown waterQualityDropdown;
     public GameObject settingsMenu;
     public Slider volumeSlider;
     public GameObject fps;
@@ -259,5 +263,21 @@ void OnDisable()
         {
             mainCam.farClipPlane = 2000;
         }
+    }
+
+    public void SetWaterQuality()
+    {
+        if (waterQualityDropdown.value == 0)
+        {
+            water.waterQuality = WaterQuality.Low;
+        }
+        else if (waterQualityDropdown.value == 1)
+        {
+            water.waterQuality = WaterQuality.Medium;
+        }
+        else if (waterQualityDropdown.value == 2)
+        {
+            water.waterQuality = WaterQuality.High;
+        }       
     }
 }
