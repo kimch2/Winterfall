@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 using UnityStandardAssets.Water;
+using UnityStandardAssets.CinematicEffects;
 
 public class Settings : MonoBehaviour {
 
@@ -11,13 +12,14 @@ public class Settings : MonoBehaviour {
     public SSAOPro ssaoScript;
     public TOD_Rays raysScript;
     public TOD_Shadows shadowsScript;
-    public Antialiasing aa;
+    public AntiAliasing aa;
     public WaterBase water;
 
     [Header("Objects")]
     public Dropdown qualitySettingsDropdown;
     public Dropdown renderDistanceDropdown;
     public Dropdown waterQualityDropdown;
+    public Dropdown antiAliasingDropdown;
     public GameObject settingsMenu;
     public Slider volumeSlider;
     public GameObject fps;
@@ -32,7 +34,6 @@ public class Settings : MonoBehaviour {
     public Toggle SSAOToggle;
     public Toggle sunRaysToggle;
     public Toggle cloudShadowsToggle;
-    public Toggle antiAliasingToggle;
     public Toggle fullscreenToggle;
 
     Camera mainCam;
@@ -131,16 +132,21 @@ public class Settings : MonoBehaviour {
         }
     }
 
-    public void AntiAliasing()
+    public void SetAntiAliasing()
     {
-        if (aa.enabled)
+        if (antiAliasingDropdown.value == 0)
         {
             aa.enabled = false;
+            //SMAA.qua = SMAA.QualityPreset.Low;
         }
         else
         {
             aa.enabled = true;
         }
+        //else if (antiAliasingDropdown.value == 2)
+        //{
+            //??
+        //}
     }
 
     /*

@@ -3,9 +3,7 @@ using System.Collections;
 
 public class OpenPage : MonoBehaviour {
 
-    public string url = "http://intercell.winterfall.dx.am/wiki/index.php?title=Winterfall";
-
-	public void Open () {
+	public void Open (string url) {
         Application.OpenURL(url);
     }
 }
