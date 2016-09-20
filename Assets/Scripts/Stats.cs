@@ -52,12 +52,12 @@ public class Stats : MonoBehaviour {
 
     void Refresh()
     {
-        int coordinatesX = (int)gameObject.transform.position.x;
-        int coordinatesZ = (int)gameObject.transform.position.z;
+        //int coordinatesX = (int)gameObject.transform.position.x;
+        //int coordinatesZ = (int)gameObject.transform.position.z;
 
         float hour = sky.Cycle.Hour;
 
-        coordinatesText.text = "X: " + coordinatesX + " | Z: " + coordinatesZ;
+        //coordinatesText.text = "X: " + coordinatesX + " | Z: " + coordinatesZ;
         dateText.text = hour.ToString("F2");
     }
 

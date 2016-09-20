@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        private float m_startHeight;
 
         // Use this for initialization
         private void Start()
@@ -55,6 +56,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            m_startHeight = m_CharacterController.height;
         }
 
 
@@ -74,6 +77,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 PlayLandingSound();
                 m_MoveDir.y = 0f;
                 m_Jumping = false;
+                //if(rigidbody.vel)
             }
             if (!m_CharacterController.isGrounded && !m_Jumping && m_PreviouslyGrounded)
             {
@@ -81,6 +85,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
+
+            float h = m_startHeight;
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                h = m_startHeight * 0.5f;
+            }
+
+            var lastHeight = m_CharacterController.height; //Stand up/crouch smoothly
+            m_CharacterController.height = Mathf.Lerp(m_CharacterController.height, h, 5 * Time.deltaTime);
+            //transform.position.y += (m_CharacterController.height - lastHeight) / 2; //Fix vertical position
+            Vector3 position = transform.position;
+            position.y += (m_CharacterController.height - lastHeight) / 2;
+            transform.position = position;
         }
 
 

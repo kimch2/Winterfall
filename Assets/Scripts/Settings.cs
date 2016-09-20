@@ -1,152 +1,365 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityStandardAssets.ImageEffects;
 using UnityStandardAssets.Water;
 using UnityStandardAssets.CinematicEffects;
 
-public class Settings : MonoBehaviour {
+public class Settings : MonoBehaviour
+{
 
-    [Header("Scripts")]
-    public CameraMotionBlur motionBlurScript;
-    public SSAOPro ssaoScript;
-    public TOD_Rays raysScript;
-    public TOD_Shadows shadowsScript;
-    public AntiAliasing aa;
-    public WaterBase water;
-
-    [Header("Objects")]
-    public Dropdown qualitySettingsDropdown;
-    public Dropdown renderDistanceDropdown;
-    public Dropdown waterQualityDropdown;
-    public Dropdown antiAliasingDropdown;
-    public GameObject settingsMenu;
+    [Header("Volume")]
     public Slider volumeSlider;
-    public GameObject fps;
-    public GameObject menu;
+
+    [Header("Presets")]
+    public Dropdown presetsDropdown;
+
+    [Header("Resolution")]
+    public Dropdown resolutionDropdown;
+
+    [Header("Panels")]
+    public GameObject menuPanel;
     public GameObject videoPanel;
     public GameObject audioPanel;
     public GameObject controlsPanel;
     public GameObject listPanel;
+    public GameObject settingsMenu;
 
-    public Toggle motionBlurToggle;
-    public Toggle showFPSToggle;
-    public Toggle SSAOToggle;
-    public Toggle sunRaysToggle;
-    public Toggle cloudShadowsToggle;
+    [Header("Fullscreen")]
     public Toggle fullscreenToggle;
 
-    Camera mainCam;
+    [Header("Bloom")]
+    public Toggle bloomHighQualityToggle;
+    public Toggle bloomAntiFlickerToggle;
+    public Toggle bloomToggle;
+    public Bloom bloomScript;
 
-    public void VideoSettings ()
+    [Header("Motion Blur")]
+    public MotionBlur motionBlurScript;
+    public Toggle motionBlurToggle;
+
+    [Header("Frames Per Second Counter")]
+    public GameObject framesPerSecondCounter;
+    public Toggle framesPerSecondCounterToggle;
+
+    [Header("Ambient Occlusion")]
+    public Toggle ambientOcclusionToggle;
+    public AmbientOcclusion ambientOcclusionScript;
+    public Toggle ambientOcclusionDownsamplingToggle;
+    public Dropdown ambientOcclusionQualityDropdown;
+
+    [Header("Anti-Aliasing")]
+    public Toggle antiAliasingToggle;
+    public Dropdown antiAliasingDropdown;
+    public AntiAliasing antiAliasingScript;
+
+    [Header("Water")]
+    public Dropdown waterQualityDropdown;
+    public WaterBase waterScript;
+
+    [Header("Lens Aberrations")]
+    public Toggle lensAberrationsToggle;
+    public LensAberrations lensAberrationsScript;
+    public Toggle lensAberrationsDistortionToggle;
+    public Toggle lensAberrationsVignetteToggle;
+    public Toggle lensAberrationsChromaticAberrationToggle;
+
+    [Header("Sun Rays")]
+    public TOD_Rays sunRaysScript;
+    public Toggle sunRaysToggle;
+
+    [Header("Cloud Shadows")]
+    public TOD_Shadows cloudShadowsScript;
+    public Toggle cloudShadowsToggle;
+
+    [Header("Render Distance")]
+    public Dropdown renderDistanceDropdown;
+    private Camera mainCam;
+
+    public void Presets()
     {
-        videoPanel.SetActive(true);
-        listPanel.SetActive(false);
+        QualitySettings.SetQualityLevel(presetsDropdown.value);
+        if (presetsDropdown.value == 0) //Very Low
+        {
+            Refresh();
+        }
+        else if (presetsDropdown.value == 1) //Low
+        {
+            Refresh();
+        }
+        else if (presetsDropdown.value == 2) //Medium
+        {
+            Refresh();
+        }
+        else if (presetsDropdown.value == 3) //High
+        {
+            Refresh();
+        }
+        else if (presetsDropdown.value == 4) //Very High
+        {
+            Refresh();
+        }
+        else if (presetsDropdown.value == 5) //Ultra
+        {
+            Refresh();
+        }
+        else //Other
+        {
+            Debug.LogError("Unknown Preset Value!");
+        }
     }
 
-    public void AudioSettings()
+    public void Resolutions()
     {
-        audioPanel.SetActive(true);
-        listPanel.SetActive(false);
+        Resolution[] resolutions = Screen.resolutions;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            resolutionDropdown.options[i].text = ResToString(resolutions[i]);
+        }
+        Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, true);
     }
 
-    public void ControlsSettings()
+    string ResToString(Resolution res)
     {
-        controlsPanel.SetActive(true);
-        listPanel.SetActive(false);
+        return res.width + " x " + res.height;
     }
 
-    public void UpdateVolume ()
+    public void Refresh()
+    {
+        Resolutions();
+        SetRenderDistance();
+        SetWaterQuality();
+        MotionBlur();
+        FramesPerSecondCounter();
+        AmbientOcclusion();
+        SunRays();
+        CloudShadows();
+        AntiAliasing();
+        LensAberrationsChromaticAberration();
+        LensAberrationsDistortion();
+        LensAberrations();
+    }
+
+    public void UpdateVolume()
     {
         AudioListener.volume = volumeSlider.value;
     }
 
-    public void Close ()
+    public void MotionBlur()
     {
-        videoPanel.SetActive(false);
-        audioPanel.SetActive(false);
-        controlsPanel.SetActive(false);
-        listPanel.SetActive(true);
-        settingsMenu.SetActive(false);
-        menu.SetActive(true);
-    }
-
-	public void MotionBlur ()
-    {
-	    if(motionBlurScript.enabled)
-        {
-            motionBlurScript.enabled = false;
-        }
-        else
+        if (motionBlurScript.enabled)
         {
             motionBlurScript.enabled = true;
         }
-	}
-
-    public void FPS()
-    {
-        if (fps.activeSelf)
-        {
-            fps.SetActive(false);
-        }
         else
         {
-            fps.SetActive(true);
+            motionBlurScript.enabled = false;
         }
     }
 
-    public void SSAO ()
+    public void FramesPerSecondCounter()
     {
-        if (ssaoScript.enabled)
+        if (framesPerSecondCounterToggle.isOn)
         {
-            ssaoScript.enabled = false;
+            framesPerSecondCounter.SetActive(true);
         }
         else
         {
-            ssaoScript.enabled = true;
+            framesPerSecondCounter.SetActive(false);
+        }
+    }
+
+    public void AmbientOcclusion()
+    {
+        if (ambientOcclusionToggle.isOn)
+        {
+            ambientOcclusionScript.enabled = true;
+        }
+        else
+        {
+            ambientOcclusionScript.enabled = false;
         }
     }
 
     public void SunRays()
     {
-        if (raysScript.enabled)
+        if (sunRaysToggle.isOn)
         {
-            raysScript.enabled = false;
+            sunRaysScript.enabled = true;
         }
         else
         {
-            raysScript.enabled = true;
+            sunRaysScript.enabled = false;
+        }
+    }
+
+    public void Bloom()
+    {
+        if (bloomToggle.isOn)
+        {
+            bloomScript.enabled = true;
+        }
+        else
+        {
+            bloomScript.enabled = false;
+        }
+    }
+
+    public void BloomHighQuality()
+    {
+        if (bloomHighQualityToggle.isOn)
+        {
+            bloomScript.settings.highQuality = true;
+        }
+        else
+        {
+            bloomScript.settings.highQuality = false;
+        }
+    }
+
+    public void BloomAntiFlicker()
+    {
+        if (bloomAntiFlickerToggle.isOn)
+        {
+            bloomScript.settings.antiFlicker = true;
+        }
+        else
+        {
+            bloomScript.settings.antiFlicker = false;
+        }
+    }
+
+    public void LensAberrations()
+    {
+        if (lensAberrationsToggle.isOn)
+        {
+            lensAberrationsToggle.enabled = true;
+        }
+        else
+        {
+            lensAberrationsToggle.enabled = false;
         }
     }
 
     public void CloudShadows()
     {
 
-        if (shadowsScript.enabled)
+        if (cloudShadowsToggle.isOn)
         {
-            shadowsScript.enabled = false;
+            cloudShadowsScript.enabled = true;
         }
         else
         {
-            shadowsScript.enabled = true;
+            cloudShadowsScript.enabled = false;
         }
     }
 
-    public void SetAntiAliasing()
+    public void LensAberrationsDistortion()
     {
-        if (antiAliasingDropdown.value == 0)
+
+        if (lensAberrationsDistortionToggle.isOn)
         {
-            aa.enabled = false;
-            //SMAA.qua = SMAA.QualityPreset.Low;
+            lensAberrationsScript.distortion.enabled = true;
+            Debug.Log("Distortion false");
         }
         else
         {
-            aa.enabled = true;
+            lensAberrationsScript.distortion.enabled = false;
+            Debug.Log("Distortion true");
         }
-        //else if (antiAliasingDropdown.value == 2)
-        //{
-            //??
-        //}
+    }
+
+    public void LensAberrationsVegnette()
+    {
+
+        if (lensAberrationsVignetteToggle.isOn)
+        {
+            lensAberrationsScript.vignette.enabled = true;
+        }
+        else
+        {
+            lensAberrationsScript.vignette.enabled = false;
+        }
+    }
+
+    public void LensAberrationsChromaticAberration()
+    {
+
+        if (lensAberrationsChromaticAberrationToggle.isOn)
+        {
+            lensAberrationsScript.chromaticAberration.enabled = true;
+        }
+        else
+        {
+            lensAberrationsScript.chromaticAberration.enabled = false;
+        }
+    }
+
+    public void AntiAliasing()
+    {
+        antiAliasingDropdown.value = presetsDropdown.value;
+        if (antiAliasingToggle.isOn)
+        {
+            antiAliasingScript.enabled = true;
+        }
+        else
+        {
+            antiAliasingScript.enabled = false;
+        }
+
+        SMAA.QualityPreset quality;
+        if (antiAliasingDropdown.value == 0)
+        {
+            antiAliasingToggle.isOn = false;
+        }
+        else if (antiAliasingDropdown.value == 1)
+        {
+            antiAliasingToggle.isOn = false;
+        }
+        else if(antiAliasingDropdown.value == 2)
+        {
+            quality = SMAA.QualityPreset.Low;
+        }
+        else if (antiAliasingDropdown.value == 3)
+        {
+            quality = SMAA.QualityPreset.Medium;
+        }
+        else if (antiAliasingDropdown.value == 4)
+        {
+            quality = SMAA.QualityPreset.High;
+        }
+        else if (antiAliasingDropdown.value == 5)
+        {
+            quality = SMAA.QualityPreset.Ultra;
+        }
+    }
+
+    public void AmbientOcclusionQuality()
+    {
+        ambientOcclusionQualityDropdown.value = presetsDropdown.value;
+
+        if (ambientOcclusionQualityDropdown.value == 0)
+        {
+            ambientOcclusionScript.enabled = false;
+        }
+        else if (ambientOcclusionQualityDropdown.value == 1)
+        {
+            ambientOcclusionScript.enabled = false;
+        }
+        else if (ambientOcclusionQualityDropdown.value == 2)
+        {
+            ambientOcclusionScript.settings.sampleCountValue = 10;
+        }
+        else if (ambientOcclusionQualityDropdown.value == 3)
+        {
+            ambientOcclusionScript.settings.sampleCountValue = 18;
+        }
+        else if (ambientOcclusionQualityDropdown.value == 4)
+        {
+            ambientOcclusionScript.settings.sampleCountValue = 26;
+        }
+        else if (ambientOcclusionQualityDropdown.value == 5)
+        {
+            ambientOcclusionScript.settings.sampleCountValue = 34;
+        }
     }
 
     /*
@@ -175,44 +388,12 @@ void OnDisable()
 }
 */
 
-    void Start ()
+    void Start()
     {
         mainCam = Camera.main;
-        //DontDestroyOnLoad(mainCam);
-        qualitySettingsDropdown.value = QualitySettings.GetQualityLevel();
+        presetsDropdown.value = QualitySettings.GetQualityLevel();
+        Refresh();
 
-        /*
-        if (motionBlurToggle.isOn)
-            motionBlurScript.enabled = true;
-        else
-            motionBlurScript.enabled = false;
-
-        if (showFPSToggle.isOn)
-            fps.SetActive(true);
-        else
-            fps.SetActive(false);
-
-        if (SSAOToggle.isOn)
-            ssaoScript.enabled = true;
-        else
-            ssaoScript.enabled = false;
-
-        if (sunRaysToggle.isOn)
-            raysScript.enabled = true;
-        else
-            raysScript.enabled = false;
-
-        if (cloudShadowsToggle.isOn)
-            shadowsScript.enabled = true;
-        else
-            cloudShadowsToggle.enabled = false;
-
-        if (antiAliasingToggle.isOn)
-            aa.enabled = true;
-        else
-            aa.enabled = false;
-
-    */
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -225,65 +406,71 @@ void OnDisable()
             Screen.fullScreen = false;
     }
 
-    public void SetQualityLevel()
-    {
-        int qualityLevel = qualitySettingsDropdown.value;
-        QualitySettings.SetQualityLevel(qualityLevel);
-    }
-
     public void SetRenderDistance()
     {
+        renderDistanceDropdown.value = presetsDropdown.value;
         if (renderDistanceDropdown.value == 0)
-        {
-            mainCam.farClipPlane = 80;
-        }
+            mainCam.farClipPlane = 100;
+
         else if (renderDistanceDropdown.value == 1)
-        {
-            mainCam.farClipPlane = 150;
-        }
-        else if(renderDistanceDropdown.value == 2)
-        {
-            mainCam.farClipPlane = 250;
-        }
-        else if(renderDistanceDropdown.value == 3)
-        {
-            mainCam.farClipPlane = 450;
-        }
-        else if (renderDistanceDropdown.value == 4)
-        {
-            mainCam.farClipPlane = 600;
-        }
-        else if (renderDistanceDropdown.value == 5)
-        {
+            mainCam.farClipPlane = 200;
+
+        else if (renderDistanceDropdown.value == 2)
+            mainCam.farClipPlane = 500;
+
+        else if (renderDistanceDropdown.value == 3)
             mainCam.farClipPlane = 800;
-        }
-        else if (renderDistanceDropdown.value == 6)
-        {
-            mainCam.farClipPlane = 1000;
-        }
-        else if (renderDistanceDropdown.value == 7)
-        {
+
+        else if (renderDistanceDropdown.value == 4)
             mainCam.farClipPlane = 1500;
-        }
-        else if (renderDistanceDropdown.value == 8)
-        {
+
+        else
             mainCam.farClipPlane = 2000;
-        }
     }
 
     public void SetWaterQuality()
     {
+        waterQualityDropdown.value = presetsDropdown.value;
         if (waterQualityDropdown.value == 0)
         {
-            water.waterQuality = WaterQuality.Low;
+            waterScript.waterQuality = WaterQuality.Low;
         }
         else if (waterQualityDropdown.value == 1)
         {
-            water.waterQuality = WaterQuality.Medium;
+            waterScript.waterQuality = WaterQuality.Medium;
         }
-        else if (waterQualityDropdown.value == 2)
+        else
         {
-            water.waterQuality = WaterQuality.High;
-        }       
+            waterScript.waterQuality = WaterQuality.High;
+        }
+    }
+
+    /* Panels */
+    public void VideoSettings()
+    {
+        videoPanel.SetActive(true);
+        listPanel.SetActive(false);
+    }
+
+    public void AudioSettings()
+    {
+        audioPanel.SetActive(true);
+        listPanel.SetActive(false);
+    }
+
+    public void ControlsSettings()
+    {
+        controlsPanel.SetActive(true);
+        listPanel.SetActive(false);
+    }
+
+    public void Close()
+    {
+        videoPanel.SetActive(false);
+        audioPanel.SetActive(false);
+        controlsPanel.SetActive(false);
+        listPanel.SetActive(true);
+        settingsMenu.SetActive(false);
+        menuPanel.SetActive(true);
     }
 }
