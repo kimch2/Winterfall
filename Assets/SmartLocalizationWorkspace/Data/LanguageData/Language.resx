@@ -116,19 +116,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="CurrentLanguage" xml:space="preserve">
-		<value>Current Language</value>
+	<data name="English" xml:space="preserve">
+		<value>English</value>
 	</data>
 	<data name="Hunger" xml:space="preserve">
 		<value>Hunger</value>
 	</data>
-	<data name="English" xml:space="preserve">
-		<value>English</value>
+	<data name="Language" xml:space="preserve">
+		<value>Language</value>
 	</data>
 	<data name="Slovenian" xml:space="preserve">
 		<value>Slovenian</value>
 	</data>
-	<data name="Language" xml:space="preserve">
-		<value>Language</value>
+	<data name="Thirst" xml:space="preserve">
+		<value>Thrist</value>
+	</data>
+	<data name="Health" xml:space="preserve">
+		<value>Health</value>
+	</data>
+	<data name="Energy" xml:space="preserve">
+		<value>Energy</value>
 	</data>
 </root>

@@ -4,11 +4,17 @@ using UnityEngine.UI;
 
 public class Localization : MonoBehaviour
 {
+    private string healthKey = "Health";
+    public Text healthText;
+
     private string hungerKey = "Hunger";
     public Text hungerText;
 
-    private string currentLanguageKey = "CurrentLanguage";
-    public Text currentLanguageText;
+    private string thirstKey = "Thirst";
+    public Text thirstText;
+
+    private string energyKey = "Energy";
+    public Text energyText;
 
     private string englishKey = "English";
     public Text englishText;
@@ -26,8 +32,10 @@ public class Localization : MonoBehaviour
 
     void Reload()
     {
+        healthText.text = LanguageManager.Instance.GetTextValue(healthKey);
         hungerText.text = LanguageManager.Instance.GetTextValue(hungerKey);
-        currentLanguageText.text = LanguageManager.Instance.GetTextValue(currentLanguageKey);
+        thirstText.text = LanguageManager.Instance.GetTextValue(thirstKey);
+        energyText.text = LanguageManager.Instance.GetTextValue(energyKey);
         languageText.text = LanguageManager.Instance.GetTextValue(languageKey);
         slovenianText.text = LanguageManager.Instance.GetTextValue(slovenianKey);
         englishText.text = LanguageManager.Instance.GetTextValue(englishKey);
