@@ -104,14 +104,15 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            //sky.Cycle.Hour += Time.deltaTime / 4;
+            sky.Cycle.Hour += Time.deltaTime / 4;
             if (energy >= 100)
             {
                 StartCoroutine(Notifications.Call("Fully Rested!"));
             }
             else
             {
-                energy += Time.deltaTime / 2;
+                energy += Time.deltaTime;
+                health += Time.deltaTime / 4;
             }
         }
 

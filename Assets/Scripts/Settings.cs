@@ -16,6 +16,7 @@ public class Settings : MonoBehaviour
     public Dropdown resolutionDropdown;
 
     [Header("Panels")]
+    public GameObject[] panels;
     public GameObject menuPanel;
     public GameObject videoPanel;
     public GameObject audioPanel;
@@ -445,26 +446,13 @@ void OnDisable()
         }
     }
 
-    /* Panels */
-    public void VideoSettings()
+    public void OpenPanel(int panel)
     {
-        videoPanel.SetActive(true);
-        listPanel.SetActive(false);
+        panels[panel].SetActive(true);
+        CloseAllPanels();
     }
 
-    public void AudioSettings()
-    {
-        audioPanel.SetActive(true);
-        listPanel.SetActive(false);
-    }
-
-    public void ControlsSettings()
-    {
-        controlsPanel.SetActive(true);
-        listPanel.SetActive(false);
-    }
-
-    public void Close()
+    public void CloseAllPanels()
     {
         videoPanel.SetActive(false);
         audioPanel.SetActive(false);
