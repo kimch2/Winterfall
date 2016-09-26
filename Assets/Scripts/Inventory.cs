@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -16,53 +17,73 @@ public class Inventory : MonoBehaviour
         public string name;
         public int item;
         public Text text;
+
+        public ItemsClass(string name, int item, Text text)
+        {
+            this.name = name;
+            this.item = item;
+            this.text = text;
+        }
     }
 
     public ItemsClass[] items;
+    //List<ItemsClass> items = new List<ItemsClass>();
 
     [Header("Leveling")]
     public int xp;
     public Text levelText;
 
     [Header("Tools")]
+    public GameObject[] equippedObjects;
     public GameObject hatchetGO;
     public GameObject pickaxeGO;
     public GameObject flashlightGO;
 
     public Transform invWindow;
+    public Text testetext;
+
+    void Start()
+    {
+
+        items.Add(new ItemsClass("TestItem1", 0, testetext));
+    }
 
     #region Equip
     public void Equip(int itemID)
     {
         if (itemID == 0) //Hatchet
         {
-            if (items[15].item >= 1 && hatchetGO.activeSelf == false)
+            if (items[15].item >= 1 && equippedObjects[itemID].activeSelf == false)
             {
-                if (pickaxeGO.activeSelf)
-                {
-                    pickaxeGO.SetActive(false);
-                }
-                hatchetGO.SetActive(true);
+                UnequipAll();
+                equippedObjects[itemID].SetActive(true);
             }
         }
 
         else if (itemID == 1) //Pickaxe
         {
-            if (items[16].item >= 1 && pickaxeGO.activeSelf == false)
+            if (items[16].item >= 1 && equippedObjects[itemID].activeSelf == false)
             {
-                if (hatchetGO.activeSelf)
-                {
-                    hatchetGO.SetActive(false);
-                }
-                pickaxeGO.SetActive(true);
+                UnequipAll();
+                equippedObjects[itemID].SetActive(true);
             }
         }
 
         else if (itemID == 2) //Flashlight
         {
-            if (items[17].item >= 1 && flashlightGO.activeSelf == false)
+            if (items[17].item >= 1 && equippedObjects[itemID].activeSelf == false)
             {
-                flashlightGO.SetActive(true);
+                UnequipAll();
+                equippedObjects[itemID].SetActive(true);
+            }
+        }
+
+        else if (itemID == 3) //Torch
+        {
+            if (items[31].item >= 1 && equippedObjects[itemID].activeSelf == false)
+            {
+                UnequipAll();
+                equippedObjects[itemID].SetActive(true);
             }
         }
     }
@@ -338,9 +359,7 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (flashlightGO.activeSelf) flashlightGO.SetActive(false);
-            else if (hatchetGO.activeSelf) hatchetGO.SetActive(false);
-            else if (pickaxeGO.activeSelf) pickaxeGO.SetActive(false);
+            UnequipAll();
         }
 
         if (Input.GetButtonDown("Inventory"))
@@ -353,6 +372,14 @@ public class Inventory : MonoBehaviour
                 foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;
                 CursorControll.UnlockCursor();
             }
+        }
+    }
+
+    void UnequipAll()
+    {
+        foreach (GameObject objct in equippedObjects)
+        {
+            objct.SetActive(false);
         }
     }
 

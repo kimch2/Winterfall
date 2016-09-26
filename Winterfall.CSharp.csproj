@@ -329,6 +329,7 @@
     <Compile Include="Assets\ULogin System\Script\bl_Register.cs" />
     <Compile Include="Assets\ULogin System\Script\bl_SaveInfo.cs" />
     <Compile Include="Assets\ULogin System\Script\bl_TopUserInfo.cs" />
+    <Compile Include="Assets\torch\scripts\Torchelight.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Emerald AI\Credit\Credit.txt" />
