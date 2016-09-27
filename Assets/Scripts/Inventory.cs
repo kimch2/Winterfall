@@ -26,8 +26,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public ItemsClass[] items;
-    //List<ItemsClass> items = new List<ItemsClass>();
+    //public ItemsClass[] items;
+    public List<ItemsClass> items = new List<ItemsClass>();
 
     [Header("Leveling")]
     public int xp;
