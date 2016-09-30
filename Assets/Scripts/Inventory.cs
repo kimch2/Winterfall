@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject inventoryWindow;
-    public GameObject smeltingWindow;
-    public GameObject tier2CraftingWindow;
-    public GameObject craftingWindow;
+    [Header("Panels")]
+    public GameObject inventoryPanel;
+    public GameObject smeltingPanel;
+    public GameObject craftingPanel;
+
+    public int craftingTier;
+
     public Stats stats;
     public Building buildingScript;
 
@@ -40,12 +43,22 @@ public class Inventory : MonoBehaviour
     public GameObject flashlightGO;
 
     public Transform invWindow;
-    public Text testetext;
 
     void Start()
     {
+        Text itemTexts = null;
 
-        items.Add(new ItemsClass("TestItem1", 0, testetext));
+        items.Add(new ItemsClass("Test_Item_1", 0, itemTexts));
+        items.Add(new ItemsClass("Test_Item_2", 0, itemTexts));
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            GameObject itemGameObjects = GameObject.FindGameObjectWithTag("InventoryItem");
+            itemTexts = itemGameObjects.transform.GetChild(i).gameObject.GetComponent<Text>();
+            items.Clear();
+            items.Add(new ItemsClass("Test_Item_1", 0, itemTexts));
+            items.Add(new ItemsClass("Test_Item_2", 0, itemTexts));
+        }
     }
 
     #region Equip
@@ -347,9 +360,6 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (inventoryWindow.activeSelf)
-            foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
-
         levelText.text = "XP: " + xp;
 
         if (flashlightGO.activeSelf)
@@ -364,14 +374,21 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetButtonDown("Inventory"))
         {
-            if (inventoryWindow.activeSelf) CloseAllWindows();
-            else
-            {
-                inventoryWindow.SetActive(true);
-                craftingWindow.SetActive(true);
-                foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;
-                CursorControll.UnlockCursor();
-            }
+            OpenInventory();
+        }
+    }
+
+    void OpenInventory()
+    {
+        if (inventoryPanel.activeSelf) CloseAllWindows();
+        else
+        {
+            inventoryPanel.SetActive(true);
+            craftingPanel.SetActive(true);
+            foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;
+            CursorControll.UnlockCursor();
+            foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
+            craftingTier = 0;
         }
     }
 
@@ -386,41 +403,34 @@ public class Inventory : MonoBehaviour
     #region Window Manager
     public void OpenCampfire()
     {
-        if (smeltingWindow.activeSelf) CloseAllWindows();
+        if (smeltingPanel.activeSelf) CloseAllWindows();
         else
         {
-            craftingWindow.SetActive(false);
-            smeltingWindow.SetActive(true);
-            tier2CraftingWindow.SetActive(false);
-            inventoryWindow.SetActive(true);
             CursorControll.UnlockCursor();
+            CloseAllWindows();
+            smeltingPanel.SetActive(true);
+            inventoryPanel.SetActive(true);
         }
     }
 
     public void CloseAllWindows()
     {
-        /*
-        var children = new List<GameObject>();
-        foreach (Transform child in invWindow) children.Add(child.gameObject);
-        children.ForEach(child => Destroy(child));
-        */
-
-        smeltingWindow.SetActive(false);
-        tier2CraftingWindow.SetActive(false);
-        inventoryWindow.SetActive(false);
+        smeltingPanel.SetActive(false);
+        craftingPanel.SetActive(false);
+        inventoryPanel.SetActive(false);
         CursorControll.LockCursor();
     }
 
     public void OpenCraftingTable()
     {
-        if (tier2CraftingWindow.activeSelf) CloseAllWindows();
+        if (craftingPanel.activeSelf) CloseAllWindows();
         else
         {
-            craftingWindow.SetActive(false);
-            smeltingWindow.SetActive(false);
-            tier2CraftingWindow.SetActive(true);
-            inventoryWindow.SetActive(true);
             CursorControll.UnlockCursor();
+            CloseAllWindows();
+            craftingPanel.SetActive(true);
+            inventoryPanel.SetActive(true);
+            craftingTier = 1;
         }
     }
     #endregion          

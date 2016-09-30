@@ -41,6 +41,7 @@ TagManager:
   - DeadPanel
   - RoofPos
   - Manager
+  - InventoryItem
   layers:
   - Default
   - TransparentFX
