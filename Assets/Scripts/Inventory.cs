@@ -29,8 +29,8 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    //public ItemsClass[] items;
     public List<ItemsClass> items = new List<ItemsClass>();
+    //public Dictionary<string, ItemsClass> itemDictionary = new Dictionary<string, ItemsClass>();
 
     [Header("Leveling")]
     public int xp;
@@ -46,18 +46,27 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        Text itemTexts = null;
+        items.Clear();
 
-        items.Add(new ItemsClass("Test_Item_1", 0, itemTexts));
-        items.Add(new ItemsClass("Test_Item_2", 0, itemTexts));
+        items.Add(new ItemsClass("Log", 0, null)); // 0
+        items.Add(new ItemsClass("Stone", 0, null)); // 1
+        items.Add(new ItemsClass("Flint", 0, null)); // 2
+        items.Add(new ItemsClass("Metal", 0, null)); // 3
+        items.Add(new ItemsClass("Duct_Tape", 0, null)); // 4
+        items.Add(new ItemsClass("Plank", 0, null)); // 5
+        items.Add(new ItemsClass("Can", 0, null)); // 6
+        items.Add(new ItemsClass("Canteen", 0, null)); // 7
+        items.Add(new ItemsClass("Iron_Ore", 0, null)); // 8
+        items.Add(new ItemsClass("Apple", 0, null)); // 9
+        items.Add(new ItemsClass("Pills", 0, null)); // 10
+        items.Add(new ItemsClass("Canned_Beans", 0, null)); // 11
+        items.Add(new ItemsClass("Canteen_Water", 0, null)); // 12
 
         for (int i = 0; i < items.Count; i++)
         {
-            GameObject itemGameObjects = GameObject.FindGameObjectWithTag("InventoryItem");
-            itemTexts = itemGameObjects.transform.GetChild(i).gameObject.GetComponent<Text>();
-            items.Clear();
-            items.Add(new ItemsClass("Test_Item_1", 0, itemTexts));
-            items.Add(new ItemsClass("Test_Item_2", 0, itemTexts));
+            GameObject inventoryGameObject = GameObject.FindGameObjectWithTag("InventoryItem");
+            Text itemText = inventoryGameObject.transform.GetChild(i).GetChild(1).gameObject.GetComponent<Text>();
+            items[i].text = itemText;
         }
     }
 

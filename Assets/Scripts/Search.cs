@@ -1,30 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class Search : MonoBehaviour
 {
-
     public Transform inventory;
     InputField input;
 
     void Start()
     {
         input = gameObject.GetComponent<InputField>();
-
         input.onEndEdit.AddListener(SubmitName);
     }
 
-
     private void SubmitName(string arg0)
     {
-        foreach (Transform child in inventory)
-        {
-            child.gameObject.SetActive(false);
-        }
         GameObject item = inventory.transform.Find(arg0.ToLower()).gameObject;
-        item.gameObject.SetActive(true);
-        Debug.Log("Found " + item.name + ".");
+
+        if(item != null)
+        {
+            foreach (Transform child in inventory)
+            {
+                child.gameObject.SetActive(false);
+            }
+            item.gameObject.SetActive(true);
+        } 
+        else
+        {
+            if(arg0.ToLower() == "water canteen")
+            {
+                //GameObject itm = inventory.transform.Find("canteen_water").gameObject;
+            }
+            item.gameObject.SetActive(true);
+        }
     }
 
     public void Clear ()
