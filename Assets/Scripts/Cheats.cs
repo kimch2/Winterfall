@@ -7,25 +7,32 @@ public class Cheats : MonoBehaviour {
 
     public Inventory inv;
     public Stats statsScript;
+    public GameObject inputField;
+    private InputField input;
 
     void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.T))
+        if(Input.GetKeyDown(KeyCode.T) && !input.isFocused)
         {
             if (Cursor.visible)
             {
                 CursorControll.LockCursor();
+                inputField.SetActive(false);
+                input.DeactivateInputField();
             }
             else
             {
                 CursorControll.UnlockCursor();
+                inputField.SetActive(true);
+                input.Select();
+                input.ActivateInputField();
             }
         }
     }
 
     void Start ()
     {
-        var input = gameObject.GetComponent<InputField>();
+        input = inputField.GetComponent<InputField>();
 
         input.onEndEdit.AddListener(SubmitName);
     }

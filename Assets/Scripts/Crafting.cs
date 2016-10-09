@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Crafting : MonoBehaviour
 {
 
     public Inventory inv;
     public GameObject icon;
-    bool crafting = false;
+    private bool crafting = false;
+    public Button[] craftingButtons;
+    public Button[] lvl2craftingButtons;
 
     //Tier 1 Crafting
 
@@ -20,11 +23,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -32,7 +35,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[5].item++;
         inv.xp += 5;
-        StartCoroutine(Notifications.Call("Crafted +2 Planks!"));
+        StartCoroutine(Notifications.Call("+2 Planks!"));
     }
 
     public void CraftHatchet()
@@ -46,11 +49,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -58,7 +61,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[15].item += 105;
         inv.xp += 15;
-        StartCoroutine(Notifications.Call("Added +105 Hatchet Durability!"));
+        StartCoroutine(Notifications.Call("+105 Hatchet Durability!"));
     }
 
     public void CraftPickaxe()
@@ -72,11 +75,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -84,7 +87,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[16].item += 70;
         inv.xp += 15;
-        StartCoroutine(Notifications.Call("Added +70 Pickaxe Durability!"));
+        StartCoroutine(Notifications.Call(" +70 Pickaxe Durability!"));
     }
 
     public void CraftFlashlight()
@@ -97,11 +100,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -109,7 +112,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[17].item += 80;
         inv.xp += 25;
-        StartCoroutine(Notifications.Call("Added +80 Flashlight Energy!"));
+        StartCoroutine(Notifications.Call("+80 Flashlight Energy!"));
     }
 
     public void CraftFoundation()
@@ -122,11 +125,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -134,7 +137,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[18].item++;
         inv.xp += 25;
-        StartCoroutine(Notifications.Call("Crafted +1 Foundation!"));
+        StartCoroutine(Notifications.Call("+1 Foundation!"));
     }
 
     public void CraftPillar()
@@ -147,11 +150,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -159,7 +162,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[19].item += 2;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +2 Pillars!"));
+        StartCoroutine(Notifications.Call("+2 Pillars!"));
     }
 
     public void CraftWall()
@@ -172,11 +175,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -184,7 +187,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[20].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Wall!"));
+        StartCoroutine(Notifications.Call("+1 Wall!"));
     }
 
     //Doorway
@@ -198,11 +201,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -210,7 +213,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[21].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Doorway!"));
+        StartCoroutine(Notifications.Call("+1 Doorway!"));
     }
 
     //Door
@@ -224,11 +227,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -236,7 +239,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[22].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Door!"));
+        StartCoroutine(Notifications.Call("+1 Door!"));
     }
 
     public void CraftStairs()
@@ -253,11 +256,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -265,7 +268,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[23].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Stairs!"));
+        StartCoroutine(Notifications.Call("+1 Stairs!"));
     }
 
     //Ceiling
@@ -279,11 +282,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -291,7 +294,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[24].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Ceiling!"));
+        StartCoroutine(Notifications.Call("+1 Ceiling!"));
     }
 
 
@@ -311,11 +314,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -323,7 +326,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[25].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Window!"));
+        StartCoroutine(Notifications.Call("+1 Window!"));
     }
 
     //Crafting Table
@@ -337,11 +340,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -349,7 +352,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[27].item++;
         inv.xp += 35;
-        StartCoroutine(Notifications.Call("Crafted +1 Crafting Table!"));
+        StartCoroutine(Notifications.Call("+1 Crafting Table!"));
     }
 
     //Campfire
@@ -364,11 +367,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -376,7 +379,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[26].item++;
         inv.xp += 20;
-        StartCoroutine(Notifications.Call("Crafted +1 Campfire!"));
+        StartCoroutine(Notifications.Call("+1 Campfire!"));
     }
 
     //Bed
@@ -389,11 +392,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -401,7 +404,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[28].item++;
         inv.xp += 25;
-        StartCoroutine(Notifications.Call("Crafted +1 Bed!"));
+        StartCoroutine(Notifications.Call("+1 Bed!"));
     }
 
     //Roof
@@ -415,11 +418,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -427,7 +430,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[28].item++;
         inv.xp += 25;
-        StartCoroutine(Notifications.Call("Crafted +1 Bed!"));
+        StartCoroutine(Notifications.Call("+1 Bed!"));
     }
 
     //Refill Canteen
@@ -444,7 +447,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[12].item++;
         inv.xp += 15;
-        StartCoroutine(Notifications.Call("Refilled Canteen!"));
+        StartCoroutine(Notifications.Call("+1 Canteen (Water)!"));
     }
 
     //Smelting\\
@@ -460,11 +463,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 
@@ -472,7 +475,7 @@ public class Crafting : MonoBehaviour
     {
         inv.items[3].item += 5;
         inv.xp += 15;
-        StartCoroutine(Notifications.Call("Smelted +5 Metal!"));
+        StartCoroutine(Notifications.Call("+5 Metal!"));
     }
 
     //Berries
@@ -486,11 +489,11 @@ public class Crafting : MonoBehaviour
         }
         else if (crafting)
         {
-            StartCoroutine(Notifications.Call("On Cooldown!"));
+            StartCoroutine(Notifications.Call("Crafting queue is full!"));
         }
         else
         {
-            StartCoroutine(Notifications.Call("Not Enough Materials!"));
+            StartCoroutine(Notifications.Call("Not enough materials!"));
         }
     }
 

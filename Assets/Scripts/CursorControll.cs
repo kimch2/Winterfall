@@ -9,6 +9,8 @@ public class CursorControll : MonoBehaviour {
     private void Start()
     {
         fpc = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public static void LockCursor()

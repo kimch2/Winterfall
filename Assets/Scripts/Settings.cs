@@ -394,9 +394,6 @@ void OnDisable()
         mainCam = Camera.main;
         presetsDropdown.value = QualitySettings.GetQualityLevel();
         Refresh();
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Fullscreen()

@@ -8,11 +8,13 @@ public class Inventory : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject smeltingPanel;
     public GameObject craftingPanel;
+    public GameObject inventoryGameObject;
 
     public int craftingTier;
 
     public Stats stats;
     public Building buildingScript;
+    public Crafting craftingScript;
 
     [System.Serializable]
     public class ItemsClass
@@ -42,10 +44,12 @@ public class Inventory : MonoBehaviour
     public GameObject pickaxeGO;
     public GameObject flashlightGO;
 
-    public Transform invWindow;
+    //public Transform invWindow;
 
     void Start()
     {
+        //inventoryPanel = GameObject.FindGameObjectWithTag("InventoryItem");
+        inventoryPanel.gameObject.SetActive(true);
         items.Clear();
 
         items.Add(new ItemsClass("Log", 0, null)); // 0
@@ -61,13 +65,31 @@ public class Inventory : MonoBehaviour
         items.Add(new ItemsClass("Pills", 0, null)); // 10
         items.Add(new ItemsClass("Canned_Beans", 0, null)); // 11
         items.Add(new ItemsClass("Canteen_Water", 0, null)); // 12
+        items.Add(new ItemsClass("Berries", 0, null)); // 13
+        items.Add(new ItemsClass("Roasted_Berries", 0, null)); // 14
+        items.Add(new ItemsClass("Hatchet", 0, null)); // 15
+        items.Add(new ItemsClass("Pickaxe", 0, null)); // 16
+        items.Add(new ItemsClass("Flashlight", 0, null)); // 17
+        items.Add(new ItemsClass("Foundation", 0, null)); // 18
+        items.Add(new ItemsClass("Pillar", 0, null)); // 19
+        items.Add(new ItemsClass("Wall", 0, null)); // 20
+        items.Add(new ItemsClass("Doorway", 0, null)); // 21
+        items.Add(new ItemsClass("Door", 0, null)); // 22
+        items.Add(new ItemsClass("Stairs", 0, null)); // 23
+        items.Add(new ItemsClass("Ceiling", 0, null)); // 24
+        items.Add(new ItemsClass("Window", 0, null)); // 25
+        items.Add(new ItemsClass("Campfire", 0, null)); // 26
+        items.Add(new ItemsClass("Crafting_Table", 0, null)); // 27
+        items.Add(new ItemsClass("Bed", 0, null)); // 28
+        items.Add(new ItemsClass("Roof", 0, null)); // 29
+        items.Add(new ItemsClass("Sapling", 0, null)); // 30
 
         for (int i = 0; i < items.Count; i++)
         {
-            GameObject inventoryGameObject = GameObject.FindGameObjectWithTag("InventoryItem");
             Text itemText = inventoryGameObject.transform.GetChild(i).GetChild(1).gameObject.GetComponent<Text>();
             items[i].text = itemText;
         }
+        inventoryPanel.gameObject.SetActive(false);
     }
 
     #region Equip
@@ -398,6 +420,11 @@ public class Inventory : MonoBehaviour
             CursorControll.UnlockCursor();
             foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
             craftingTier = 0;
+            HideHUD.Hide();
+            foreach (Button btn in craftingScript.lvl2craftingButtons)
+            {
+                btn.interactable = false;
+            }
         }
     }
 
@@ -416,6 +443,7 @@ public class Inventory : MonoBehaviour
         else
         {
             CursorControll.UnlockCursor();
+            HideHUD.Hide();
             CloseAllWindows();
             smeltingPanel.SetActive(true);
             inventoryPanel.SetActive(true);
@@ -428,6 +456,7 @@ public class Inventory : MonoBehaviour
         craftingPanel.SetActive(false);
         inventoryPanel.SetActive(false);
         CursorControll.LockCursor();
+        HideHUD.Show();
     }
 
     public void OpenCraftingTable()
@@ -436,10 +465,15 @@ public class Inventory : MonoBehaviour
         else
         {
             CursorControll.UnlockCursor();
+            HideHUD.Hide();
             CloseAllWindows();
             craftingPanel.SetActive(true);
             inventoryPanel.SetActive(true);
             craftingTier = 1;
+            foreach(Button btn in craftingScript.lvl2craftingButtons)
+            {
+                btn.interactable = true;
+            }
         }
     }
     #endregion          

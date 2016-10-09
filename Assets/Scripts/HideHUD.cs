@@ -3,29 +3,45 @@ using System.Collections;
 
 public class HideHUD : MonoBehaviour {
 
-    public GameObject[] GO;
+    static private GameObject[] GO;
+    public GameObject[] GOs;
 
-    bool hud = true;
+    static bool hud = true;
+
+    void Start()
+    {
+        GO = GOs;
+    }
 
 	void Update () {
         if (Input.GetButtonDown("HideHUD"))
         {
             if(hud)
             {
-                foreach (GameObject go in GO)
-                {
-                    go.SetActive(false);
-                }
-                hud = false;
+                Hide();
             }
             else
             {
-                foreach (GameObject go in GO)
-                {
-                    go.SetActive(true);
-                }
-                hud = true;
+                Show();
             }
         }
+    }
+
+    public static void Hide ()
+    {
+        foreach (GameObject go in GO)
+        {
+            go.SetActive(false);
+        }
+        hud = false;
+    }
+
+    public static void Show()
+    {
+        foreach (GameObject go in GO)
+        {
+            go.SetActive(true);
+        }
+        hud = true;
     }
 }

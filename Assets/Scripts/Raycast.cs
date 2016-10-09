@@ -23,17 +23,13 @@ public class Raycast : MonoBehaviour {
     public Animation axeAnim;
     public Animation pickaxeAnim;
 
-    public FirstPersonController fpc;
-
     //public GameObject effect;
 
     public void WakeUp()
     {
         statsScript.sleeping = false;
         sleepPanel.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        fpc.enabled = true;
+        CursorControll.LockCursor();
     }
 
     void Update ()
@@ -114,17 +110,13 @@ public class Raycast : MonoBehaviour {
                     {
                         sleepPanel.SetActive(true);
                         statsScript.sleeping = true;
-                        Cursor.visible = true;
-                        Cursor.lockState = CursorLockMode.None;
-                        fpc.enabled = false;
+                        CursorControll.UnlockCursor();
                     }
                     else
                     {
                         sleepPanel.SetActive(false);
                         statsScript.sleeping = false;
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        fpc.enabled = true;
+                        CursorControll.LockCursor();
                     }
                 }
             }
