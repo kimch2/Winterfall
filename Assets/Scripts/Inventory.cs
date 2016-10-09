@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     public GameObject smeltingPanel;
     public GameObject craftingPanel;
     public GameObject inventoryGameObject;
+    public GameObject craftingGameObject;
 
     public int craftingTier;
 
@@ -38,11 +39,7 @@ public class Inventory : MonoBehaviour
     public int xp;
     public Text levelText;
 
-    [Header("Tools")]
     public GameObject[] equippedObjects;
-    public GameObject hatchetGO;
-    public GameObject pickaxeGO;
-    public GameObject flashlightGO;
 
     //public Transform invWindow;
 
@@ -83,12 +80,20 @@ public class Inventory : MonoBehaviour
         items.Add(new ItemsClass("Bed", 0, null)); // 28
         items.Add(new ItemsClass("Roof", 0, null)); // 29
         items.Add(new ItemsClass("Sapling", 0, null)); // 30
+        items.Add(new ItemsClass("Torch", 0, null)); // 31
 
         for (int i = 0; i < items.Count; i++)
         {
             Text itemText = inventoryGameObject.transform.GetChild(i).GetChild(1).gameObject.GetComponent<Text>();
             items[i].text = itemText;
         }
+
+        for (int i = 0; i < craftingScript.craftItems.Count; i++)
+        {
+            Button itemButton = craftingGameObject.transform.GetChild(i).gameObject.GetComponent<Button>();
+            craftingScript.craftItems[i].btn = itemButton;
+        }
+
         inventoryPanel.gameObject.SetActive(false);
     }
 
@@ -393,7 +398,7 @@ public class Inventory : MonoBehaviour
     {
         levelText.text = "XP: " + xp;
 
-        if (flashlightGO.activeSelf)
+        if (equippedObjects[2].activeSelf)
         {
             items[17].item -= (int)Time.deltaTime / 2;
         }
@@ -421,9 +426,12 @@ public class Inventory : MonoBehaviour
             foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
             craftingTier = 0;
             HideHUD.Hide();
-            foreach (Button btn in craftingScript.lvl2craftingButtons)
+            foreach (Crafting.CraftingClass crft in craftingScript.craftItems)
             {
-                btn.interactable = false;
+                if (crft.tier == 1)
+                {
+                    crft.btn.interactable = false;
+                }
             }
         }
     }
@@ -470,9 +478,12 @@ public class Inventory : MonoBehaviour
             craftingPanel.SetActive(true);
             inventoryPanel.SetActive(true);
             craftingTier = 1;
-            foreach(Button btn in craftingScript.lvl2craftingButtons)
+            foreach (Crafting.CraftingClass crft in craftingScript.craftItems)
             {
-                btn.interactable = true;
+                if (crft.tier == 1)
+                {
+                    crft.btn.interactable = true;
+                }
             }
         }
     }

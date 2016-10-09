@@ -257,6 +257,7 @@
     <Compile Include="Assets\Scripts\Crafting.cs" />
     <Compile Include="Assets\Scripts\CursorControll.cs" />
     <Compile Include="Assets\Scripts\Exit.cs" />
+    <Compile Include="Assets\Scripts\FallDamage.cs" />
     <Compile Include="Assets\Scripts\GetTextFromWeb.cs" />
     <Compile Include="Assets\Scripts\HideHUD.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />

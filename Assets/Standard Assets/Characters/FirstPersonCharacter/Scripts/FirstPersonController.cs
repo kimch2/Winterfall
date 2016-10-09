@@ -52,10 +52,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_FovKick.Setup(m_Camera);
             m_HeadBob.Setup(m_Camera, m_StepInterval);
             m_StepCycle = 0f;
-            m_NextStep = m_StepCycle/2f;
+            m_NextStep = m_StepCycle / 2f;
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
-			m_MouseLook.Init(transform , m_Camera.transform);
+            m_MouseLook.Init(transform, m_Camera.transform);
 
             m_startHeight = m_CharacterController.height;
         }
