@@ -5,7 +5,6 @@ using UnityStandardAssets.CinematicEffects;
 
 public class Settings : MonoBehaviour
 {
-
     [Header("Volume")]
     public Slider volumeSlider;
 
@@ -74,6 +73,16 @@ public class Settings : MonoBehaviour
     [Header("Render Distance")]
     public Dropdown renderDistanceDropdown;
     private Camera mainCam;
+
+    void OnEnable()
+    {
+        fullscreenToggle.onValueChanged.AddListener(delegate { });
+    }
+
+    void OnFullscreenToggle()
+    {
+
+    }
 
     public void Presets()
     {
@@ -399,7 +408,7 @@ void OnDisable()
     public void Fullscreen()
     {
         if (fullscreenToggle.isOn)
-            Screen.fullScreen = true;
+            Screen.fullScreen = true; 
         else
             Screen.fullScreen = false;
     }
