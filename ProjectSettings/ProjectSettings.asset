@@ -292,6 +292,7 @@ PlayerSettings:
   wiiUSystemHeapSize: 128
   wiiUTVStartupScreen: {fileID: 0}
   wiiUGamePadStartupScreen: {fileID: 0}
+  wiiUDrcBufferDisabled: 0
   wiiUProfilerLibPath: 
   actionOnDotNetUnhandledException: 1
   enableInternalProfiler: 0
@@ -451,6 +452,8 @@ PlayerSettings:
     WebPlayer: 0
   incrementalIl2cppBuild: {}
   additionalIl2CppArgs: 
+  m_RenderingPath: 1
+  m_MobileRenderingPath: 1
   metroPackageName: Winterfall New
   metroPackageVersion: 
   metroCertificatePath: 
