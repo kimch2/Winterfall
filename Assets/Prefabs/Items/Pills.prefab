@@ -16,13 +16,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013479033860}
-  - 205: {fileID: 205000012568216940}
-  - 136: {fileID: 136000011554010088}
-  - 114: {fileID: 114000010503606158}
-  - 54: {fileID: 54000011204951784}
+  - component: {fileID: 4000013479033860}
+  - component: {fileID: 205000012568216940}
+  - component: {fileID: 136000011554010088}
+  - component: {fileID: 114000010503606158}
+  - component: {fileID: 54000011204951784}
   m_Layer: 0
   m_Name: Pills
   m_TagString: Item
@@ -35,11 +35,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013091384252}
-  - 33: {fileID: 33000012537059058}
-  - 23: {fileID: 23000011570046164}
+  - component: {fileID: 4000013091384252}
+  - component: {fileID: 33000012537059058}
+  - component: {fileID: 23000011570046164}
   m_Layer: 0
   m_Name: PillBottle_LOD0
   m_TagString: Untagged
@@ -52,11 +52,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011849078880}
-  - 33: {fileID: 33000012853732196}
-  - 23: {fileID: 23000010380475840}
+  - component: {fileID: 4000011849078880}
+  - component: {fileID: 33000012853732196}
+  - component: {fileID: 23000010380475840}
   m_Layer: 0
   m_Name: PillBottle_LOD1
   m_TagString: Untagged
@@ -69,11 +69,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011089198810}
-  - 33: {fileID: 33000013286463042}
-  - 23: {fileID: 23000010569830602}
+  - component: {fileID: 4000011089198810}
+  - component: {fileID: 33000013286463042}
+  - component: {fileID: 23000010569830602}
   m_Layer: 0
   m_Name: PillBottle_LOD2
   m_TagString: Untagged
@@ -90,10 +90,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013479033860}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000011849078880
 Transform:
   m_ObjectHideFlags: 1
@@ -103,10 +103,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013479033860}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013091384252
 Transform:
   m_ObjectHideFlags: 1
@@ -116,10 +116,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013479033860}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4000013479033860
 Transform:
   m_ObjectHideFlags: 1
@@ -129,13 +129,13 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2260742, y: -1.2171173, z: -0.18896484}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013091384252}
   - {fileID: 4000011849078880}
   - {fileID: 4000011089198810}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23000010380475840
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -150,7 +150,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed315211df6b36140a0ce8a7d75e7fd4, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -158,7 +160,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -179,7 +181,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed315211df6b36140a0ce8a7d75e7fd4, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -187,7 +191,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -208,7 +212,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 2100000, guid: ed315211df6b36140a0ce8a7d75e7fd4, type: 2}
-  m_SubsetIndices: 
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
@@ -216,7 +222,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -293,8 +299,8 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0.0000000037252903, y: 0.058465127, z: -0.000000011175871}
   m_Size: 0.116930254
-  m_FadeMode: 0
-  m_AnimateCrossFading: 0
+  m_FadeMode: 1
+  m_AnimateCrossFading: 1
   m_LODs:
   - screenRelativeHeight: 0.39679268
     fadeTransitionWidth: 0

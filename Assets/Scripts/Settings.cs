@@ -74,14 +74,17 @@ public class Settings : MonoBehaviour
     public Dropdown renderDistanceDropdown;
     private Camera mainCam;
 
+    //Saving
+    private bool fullscreen;
+
     void OnEnable()
     {
-        fullscreenToggle.onValueChanged.AddListener(delegate { });
+        fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
     }
 
     void OnFullscreenToggle()
     {
-
+        fullscreen = Screen.fullScreen = fullscreenToggle.isOn;
     }
 
     public void Presets()

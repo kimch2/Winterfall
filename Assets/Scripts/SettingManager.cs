@@ -36,7 +36,6 @@ public class SettingManager : MonoBehaviour
 
     public void OnResolutionChange()
     {
-        Resolution[] resolutions = Screen.resolutions;
         for (int i = 0; i < resolutions.Length; i++)
         {
             resolutionDropdown.options[i].text = ResToString(resolutions[i]);

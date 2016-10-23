@@ -81,6 +81,7 @@ public class Inventory : MonoBehaviour
         items.Add(new ItemsClass("Roof", 0, null)); // 29
         items.Add(new ItemsClass("Sapling", 0, null)); // 30
         items.Add(new ItemsClass("Torch", 0, null)); // 31
+        items.Add(new ItemsClass("Tent", 0, null)); // 32
 
         for (int i = 0; i < items.Count; i++)
         {
@@ -377,6 +378,21 @@ public class Inventory : MonoBehaviour
             }
         }
         else if (itemID == 19) //Sapling
+        {
+            if (buildingScript.buildings[12].key)
+            {
+                buildingScript.buildings[12].key = false;
+            }
+            else
+            {
+                foreach (Building.BuildingsClass build in buildingScript.buildings)
+                {
+                    build.key = false;
+                }
+                buildingScript.buildings[12].key = true;
+            }
+        }
+        else if (itemID == 20) //Tent
         {
             if (buildingScript.buildings[12].key)
             {
