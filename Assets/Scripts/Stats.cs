@@ -2,7 +2,8 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Stats : MonoBehaviour {
+public class Stats : MonoBehaviour
+{
 
     public TOD_Sky sky;
     public GameObject deathPanel;
@@ -17,7 +18,6 @@ public class Stats : MonoBehaviour {
     [Header("Energy")]
     public Slider energySlider;
     public float energy;
-    public bool sleeping;
 
     [Header("Hunger")]
     public Slider hungerSlider;
@@ -72,7 +72,22 @@ public class Stats : MonoBehaviour {
     }
     */
 
-    void Update() {
+    public void Sleep()
+    {
+        if (sky.Cycle.Hour >= 21 || sky.Cycle.Hour <= 7)
+        {
+            sky.Cycle.Hour = 7;
+            sky.Cycle.Day++;
+            StartCoroutine(Notifications.Call("Good morning."));
+        }
+        else
+        {
+            StartCoroutine(Notifications.Call("You can only sleep at night!"));
+        }
+    }
+
+    void Update()
+    {
 
         healthSlider.value = health;
         energySlider.value = energy;
@@ -90,30 +105,14 @@ public class Stats : MonoBehaviour {
 
         /* ENERGY CONTROL SECTION */
 
-        if (sleeping == false)
+        if (energy > 0)
         {
-            if (energy > 0)
-            {
-                energy -= Time.deltaTime / 10;
-            }
-
-            if (energy >= 100)
-            {
-                energy = 100;
-            }
+            energy -= Time.deltaTime / 10;
         }
-        else
+
+        if (energy >= 100)
         {
-            sky.Cycle.Hour += Time.deltaTime / 4;
-            if (energy >= 100)
-            {
-                StartCoroutine(Notifications.Call("Fully Rested!"));
-            }
-            else
-            {
-                energy += Time.deltaTime;
-                health += Time.deltaTime / 4;
-            }
+            energy = 100;
         }
 
         /* THIRST CONTROL SECTION*/
@@ -139,7 +138,7 @@ public class Stats : MonoBehaviour {
         }
         else
         {
-            if(air > 0)
+            if (air > 0)
             {
                 air = 70;
             }
@@ -199,7 +198,7 @@ public class Stats : MonoBehaviour {
             }
         }
 
-        if(air <= 0)
+        if (air <= 0)
         {
             health -= Time.deltaTime * 2;
         }

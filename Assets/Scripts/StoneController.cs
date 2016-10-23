@@ -14,9 +14,9 @@ public class StoneController : MonoBehaviour {
         {
             Destroy(gameObject);
 
-            GameObject newViking1 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject newViking2 = (GameObject)Instantiate(prefab1, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
-            GameObject newViking3 = (GameObject)Instantiate(prefab2, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+            GameObject newViking1 = Instantiate(prefab1, gameObject.transform.position + new Vector3(0, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+            GameObject newViking2 = Instantiate(prefab1, gameObject.transform.position + new Vector3(1, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
+            GameObject newViking3 = Instantiate(prefab2, gameObject.transform.position + new Vector3(2, 0, 0) + new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)), Quaternion.identity);
 
             newViking1.transform.rotation = Random.rotation;
             newViking2.transform.rotation = Random.rotation;

@@ -8,8 +8,6 @@ public class Raycast : MonoBehaviour {
     public Text infoText;
     public int range;
 
-    public GameObject sleepPanel;
-
     public LayerMask myLayerMask;
 
     float timeStamp;
@@ -22,15 +20,6 @@ public class Raycast : MonoBehaviour {
 
     public Animation axeAnim;
     public Animation pickaxeAnim;
-
-    //public GameObject effect;
-
-    public void WakeUp()
-    {
-        statsScript.sleeping = false;
-        sleepPanel.SetActive(false);
-        CursorControll.LockCursor();
-    }
 
     void Update ()
     {
@@ -102,22 +91,11 @@ public class Raycast : MonoBehaviour {
             else if (hit.collider.gameObject.tag == "Sleep")
             {
                 infoText.gameObject.SetActive(true);
-                infoText.text = "Sleep/Wake up";
+                infoText.text = "Sleep";
 
                 if (Input.GetButtonDown("Open"))
                 {
-                    if (statsScript.sleeping == false)
-                    {
-                        sleepPanel.SetActive(true);
-                        statsScript.sleeping = true;
-                        CursorControll.UnlockCursor();
-                    }
-                    else
-                    {
-                        sleepPanel.SetActive(false);
-                        statsScript.sleeping = false;
-                        CursorControll.LockCursor();
-                    }
+                    statsScript.Sleep();
                 }
             }
 
