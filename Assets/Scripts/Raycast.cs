@@ -32,7 +32,7 @@ public class Raycast : MonoBehaviour {
             {
                 GameObject tree = (hit.collider.gameObject);
 
-                if (Input.GetButtonDown("Fire1") && inv.items[15].item >= 1 && inv.equippedObjects[0].activeSelf && timeStamp <= Time.time)
+                if (Input.GetButtonDown("Fire1") && inv.items[15].item >= 1 && inv.equipables[0].activeSelf && timeStamp <= Time.time)
                 {
                     inv.items[15].item--;
                     timeStamp = Time.time + 1f;
@@ -49,7 +49,7 @@ public class Raycast : MonoBehaviour {
             {
                 GameObject stone = (hit.collider.gameObject);
 
-                if (Input.GetButtonDown("Fire1") && inv.items[16].item >= 1 && inv.equippedObjects[1].activeSelf && timeStamp <= Time.time)
+                if (Input.GetButtonDown("Fire1") && inv.items[16].item >= 1 && inv.equipables[1].activeSelf && timeStamp <= Time.time)
                 {
                     //Object eff = Instantiate(effect, hit.point, Quaternion.LookRotation(hit.normal));
                     //Destroy(eff, 0.25f);
@@ -115,12 +115,14 @@ public class Raycast : MonoBehaviour {
             else if (hit.collider.gameObject.tag == "Berry")
             {
                 GameObject bush = (hit.collider.gameObject);
-                infoText.gameObject.SetActive(true);
-                infoText.text = "Pick Berries";
+                BushController bushScript = bush.GetComponent<BushController>();
+                if (bushScript.isMature) {
+                    infoText.gameObject.SetActive(true);
+                    infoText.text = "Pick Berries";
+                }
 
                 if (Input.GetButtonDown("Open"))
                 {
-                    BushController bushScript = bush.GetComponent<BushController>();
                     bushScript.Pick();
                 }
             }

@@ -24,27 +24,27 @@ public class PauseMenu : MonoBehaviour {
                 Time.timeScale = 0;
                 menu.SetActive(true);
                 crosshair.SetActive(false);
-                if (settingsScript.settingsMenu.activeSelf)
+                if (settingsScript.panels[5].activeSelf)
                 {
-                    settingsScript.settingsMenu.SetActive(false);
-                    settingsScript.videoPanel.SetActive(false);
-                    settingsScript.audioPanel.SetActive(false);
-                    settingsScript.controlsPanel.SetActive(false);
-                    settingsScript.listPanel.SetActive(true);
+                    foreach(GameObject panel in settingsScript.panels)
+                    {
+                        panel.SetActive(false);
+                    }
+                    settingsScript.panels[4].SetActive(true);
                 }
             }
         }
     }
 
     public void Settings () {
-        settingsScript.settingsMenu.SetActive(true);
+        settingsScript.panels[5].SetActive(true);
         menu.SetActive(false);
 	}
 
     public void Resume()
     {
         menu.SetActive(false);
-        settingsScript.settingsMenu.SetActive(false);
+        settingsScript.panels[5].SetActive(false);
         crosshair.SetActive(true);
         CursorControll.LockCursor();
         Time.timeScale = 1;

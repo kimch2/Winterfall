@@ -16,12 +16,6 @@ public class Settings : MonoBehaviour
 
     [Header("Panels")]
     public GameObject[] panels;
-    public GameObject menuPanel;
-    public GameObject videoPanel;
-    public GameObject audioPanel;
-    public GameObject controlsPanel;
-    public GameObject listPanel;
-    public GameObject settingsMenu;
 
     [Header("Fullscreen")]
     public Toggle fullscreenToggle;
@@ -30,10 +24,10 @@ public class Settings : MonoBehaviour
     public Toggle bloomHighQualityToggle;
     public Toggle bloomAntiFlickerToggle;
     public Toggle bloomToggle;
-    public Bloom bloomScript;
+    private Bloom bloomScript;
 
     [Header("Motion Blur")]
-    public MotionBlur motionBlurScript;
+    private MotionBlur motionBlurScript;
     public Toggle motionBlurToggle;
 
     [Header("Frames Per Second Counter")]
@@ -42,14 +36,14 @@ public class Settings : MonoBehaviour
 
     [Header("Ambient Occlusion")]
     public Toggle ambientOcclusionToggle;
-    public AmbientOcclusion ambientOcclusionScript;
+    private AmbientOcclusion ambientOcclusionScript;
     public Toggle ambientOcclusionDownsamplingToggle;
     public Dropdown ambientOcclusionQualityDropdown;
 
     [Header("Anti-Aliasing")]
     public Toggle antiAliasingToggle;
     public Dropdown antiAliasingDropdown;
-    public AntiAliasing antiAliasingScript;
+    private AntiAliasing antiAliasingScript;
 
     [Header("Water")]
     public Dropdown waterQualityDropdown;
@@ -57,13 +51,13 @@ public class Settings : MonoBehaviour
 
     [Header("Lens Aberrations")]
     public Toggle lensAberrationsToggle;
-    public LensAberrations lensAberrationsScript;
+    private LensAberrations lensAberrationsScript;
     public Toggle lensAberrationsDistortionToggle;
     public Toggle lensAberrationsVignetteToggle;
     public Toggle lensAberrationsChromaticAberrationToggle;
 
     [Header("Sun Rays")]
-    public TOD_Rays sunRaysScript;
+    private TOD_Rays sunRaysScript;
     public Toggle sunRaysToggle;
 
     [Header("Cloud Shadows")]
@@ -72,13 +66,25 @@ public class Settings : MonoBehaviour
 
     [Header("Render Distance")]
     public Dropdown renderDistanceDropdown;
-    private Camera mainCam;
+    public Camera mainCam;
 
     //Saving
     private bool fullscreen;
 
-    void OnEnable()
+    void Start()
     {
+        mainCam = Camera.main;
+        presetsDropdown.value = QualitySettings.GetQualityLevel();
+        Refresh();
+
+        bloomScript = mainCam.GetComponent<Bloom>();
+        motionBlurScript = mainCam.GetComponent<MotionBlur>();
+        ambientOcclusionScript = mainCam.GetComponent<AmbientOcclusion>();
+        antiAliasingScript = mainCam.GetComponent<AntiAliasing>();
+        sunRaysScript = mainCam.GetComponent<TOD_Rays>();
+        cloudShadowsScript = mainCam.GetComponent<TOD_Shadows>();
+        lensAberrationsScript = mainCam.GetComponent<LensAberrations>();
+
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
     }
 
@@ -158,74 +164,32 @@ public class Settings : MonoBehaviour
 
     public void MotionBlur()
     {
-        if (motionBlurScript.enabled)
-        {
-            motionBlurScript.enabled = true;
-        }
-        else
-        {
-            motionBlurScript.enabled = false;
-        }
+        motionBlurScript.enabled = motionBlurToggle.isOn;
     }
 
     public void FramesPerSecondCounter()
     {
-        if (framesPerSecondCounterToggle.isOn)
-        {
-            framesPerSecondCounter.SetActive(true);
-        }
-        else
-        {
-            framesPerSecondCounter.SetActive(false);
-        }
+        framesPerSecondCounter.SetActive(framesPerSecondCounterToggle.isOn);
     }
 
     public void AmbientOcclusion()
     {
-        if (ambientOcclusionToggle.isOn)
-        {
-            ambientOcclusionScript.enabled = true;
-        }
-        else
-        {
-            ambientOcclusionScript.enabled = false;
-        }
+        ambientOcclusionScript.enabled = ambientOcclusionToggle.isOn;
     }
 
     public void SunRays()
     {
-        if (sunRaysToggle.isOn)
-        {
-            sunRaysScript.enabled = true;
-        }
-        else
-        {
-            sunRaysScript.enabled = false;
-        }
+        sunRaysScript.enabled = sunRaysToggle.isOn;
     }
 
     public void Bloom()
     {
-        if (bloomToggle.isOn)
-        {
-            bloomScript.enabled = true;
-        }
-        else
-        {
-            bloomScript.enabled = false;
-        }
+        bloomScript.enabled = bloomToggle.isOn;
     }
 
     public void BloomHighQuality()
     {
-        if (bloomHighQualityToggle.isOn)
-        {
-            bloomScript.settings.highQuality = true;
-        }
-        else
-        {
-            bloomScript.settings.highQuality = false;
-        }
+        bloomScript.settings.highQuality = bloomHighQualityToggle.isOn;
     }
 
     public void BloomAntiFlicker()
@@ -401,13 +365,6 @@ void OnDisable()
 }
 */
 
-    void Start()
-    {
-        mainCam = Camera.main;
-        presetsDropdown.value = QualitySettings.GetQualityLevel();
-        Refresh();
-    }
-
     public void Fullscreen()
     {
         if (fullscreenToggle.isOn)
@@ -463,11 +420,10 @@ void OnDisable()
 
     public void CloseAllPanels()
     {
-        videoPanel.SetActive(false);
-        audioPanel.SetActive(false);
-        controlsPanel.SetActive(false);
-        listPanel.SetActive(true);
-        settingsMenu.SetActive(false);
-        menuPanel.SetActive(true);
+        foreach (GameObject panel in panels)
+        {
+            panel.SetActive(false);
+        }
+        panels[5].SetActive(true);
     }
 }

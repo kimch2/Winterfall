@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -79,27 +79,28 @@ NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
+    agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: 0.16666666
     manualCellSize: 0
+    cellSize: 0.16666666
+    accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &10837919
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 10837920}
-  - 222: {fileID: 10837922}
-  - 114: {fileID: 10837921}
+  - component: {fileID: 10837920}
+  - component: {fileID: 10837922}
+  - component: {fileID: 10837921}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -169,11 +170,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 18473007}
-  - 222: {fileID: 18473009}
-  - 114: {fileID: 18473008}
+  - component: {fileID: 18473007}
+  - component: {fileID: 18473009}
+  - component: {fileID: 18473008}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -243,11 +244,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 33061156}
-  - 222: {fileID: 33061158}
-  - 114: {fileID: 33061157}
+  - component: {fileID: 33061156}
+  - component: {fileID: 33061158}
+  - component: {fileID: 33061157}
   m_Layer: 5
   m_Name: BlackScreen
   m_TagString: Untagged
@@ -311,13 +312,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 97430649}
-  - 222: {fileID: 97430653}
-  - 114: {fileID: 97430652}
-  - 114: {fileID: 97430651}
-  - 111: {fileID: 97430650}
+  - component: {fileID: 97430649}
+  - component: {fileID: 97430653}
+  - component: {fileID: 97430652}
+  - component: {fileID: 97430651}
+  - component: {fileID: 97430650}
   m_Layer: 5
   m_Name: Info
   m_TagString: Untagged
@@ -450,10 +451,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 123848244}
-  - 111: {fileID: 123848245}
+  - component: {fileID: 123848244}
+  - component: {fileID: 123848245}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -507,12 +508,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 129296998}
-  - 222: {fileID: 129296997}
-  - 114: {fileID: 129296996}
-  - 114: {fileID: 129296995}
+  - component: {fileID: 129296998}
+  - component: {fileID: 129296997}
+  - component: {fileID: 129296996}
+  - component: {fileID: 129296995}
   m_Layer: 5
   m_Name: Back_Button
   m_TagString: Untagged
@@ -629,11 +630,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 189983606}
-  - 222: {fileID: 189983608}
-  - 114: {fileID: 189983607}
+  - component: {fileID: 189983606}
+  - component: {fileID: 189983608}
+  - component: {fileID: 189983607}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -703,11 +704,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 195080481}
-  - 222: {fileID: 195080483}
-  - 114: {fileID: 195080482}
+  - component: {fileID: 195080481}
+  - component: {fileID: 195080483}
+  - component: {fileID: 195080482}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -771,11 +772,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 426186424}
-  - 222: {fileID: 426186426}
-  - 114: {fileID: 426186425}
+  - component: {fileID: 426186424}
+  - component: {fileID: 426186426}
+  - component: {fileID: 426186425}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -845,11 +846,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 513994323}
-  - 222: {fileID: 513994325}
-  - 114: {fileID: 513994324}
+  - component: {fileID: 513994323}
+  - component: {fileID: 513994325}
+  - component: {fileID: 513994324}
   m_Layer: 5
   m_Name: Instruction
   m_TagString: Untagged
@@ -919,11 +920,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 520496189}
-  - 222: {fileID: 520496188}
-  - 114: {fileID: 520496187}
+  - component: {fileID: 520496189}
+  - component: {fileID: 520496188}
+  - component: {fileID: 520496187}
   m_Layer: 5
   m_Name: Base
   m_TagString: Untagged
@@ -987,11 +988,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 523158220}
-  - 222: {fileID: 523158222}
-  - 114: {fileID: 523158221}
+  - component: {fileID: 523158220}
+  - component: {fileID: 523158222}
+  - component: {fileID: 523158221}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1061,12 +1062,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 531897456}
-  - 222: {fileID: 531897459}
-  - 114: {fileID: 531897458}
-  - 114: {fileID: 531897457}
+  - component: {fileID: 531897456}
+  - component: {fileID: 531897459}
+  - component: {fileID: 531897458}
+  - component: {fileID: 531897457}
   m_Layer: 5
   m_Name: Login_Button
   m_TagString: Untagged
@@ -1183,11 +1184,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 535100556}
-  - 222: {fileID: 535100558}
-  - 114: {fileID: 535100557}
+  - component: {fileID: 535100556}
+  - component: {fileID: 535100558}
+  - component: {fileID: 535100557}
   m_Layer: 5
   m_Name: Base
   m_TagString: Untagged
@@ -1251,12 +1252,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 542467023}
-  - 222: {fileID: 542467026}
-  - 114: {fileID: 542467025}
-  - 114: {fileID: 542467024}
+  - component: {fileID: 542467023}
+  - component: {fileID: 542467026}
+  - component: {fileID: 542467025}
+  - component: {fileID: 542467024}
   m_Layer: 5
   m_Name: OrRegister
   m_TagString: Untagged
@@ -1373,11 +1374,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 620439273}
-  - 222: {fileID: 620439275}
-  - 114: {fileID: 620439274}
+  - component: {fileID: 620439273}
+  - component: {fileID: 620439275}
+  - component: {fileID: 620439274}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1465,11 +1466,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 637219774}
-  - 222: {fileID: 637219776}
-  - 114: {fileID: 637219775}
+  - component: {fileID: 637219774}
+  - component: {fileID: 637219776}
+  - component: {fileID: 637219775}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1573,6 +1574,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012208602974, guid: fb8fa5b4a23bfeb40b67b1840ee65b09,
+        type: 2}
+      propertyPath: BanInfoText
+      value: 
+      objectReference: {fileID: 674623994}
+    - target: {fileID: 114000012208602974, guid: fb8fa5b4a23bfeb40b67b1840ee65b09,
+        type: 2}
+      propertyPath: BanUI
+      value: 
+      objectReference: {fileID: 1114511238}
     - target: {fileID: 11400000, guid: fb8fa5b4a23bfeb40b67b1840ee65b09, type: 2}
       propertyPath: mToggle
       value: 
@@ -1621,16 +1632,6 @@ Prefab:
       propertyPath: Loading
       value: 
       objectReference: {fileID: 926496791}
-    - target: {fileID: 114000012208602974, guid: fb8fa5b4a23bfeb40b67b1840ee65b09,
-        type: 2}
-      propertyPath: BanInfoText
-      value: 
-      objectReference: {fileID: 674623994}
-    - target: {fileID: 114000012208602974, guid: fb8fa5b4a23bfeb40b67b1840ee65b09,
-        type: 2}
-      propertyPath: BanUI
-      value: 
-      objectReference: {fileID: 1114511238}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb8fa5b4a23bfeb40b67b1840ee65b09, type: 2}
   m_IsPrefabParent: 0
@@ -1639,11 +1640,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 674623993}
-  - 222: {fileID: 674623995}
-  - 114: {fileID: 674623994}
+  - component: {fileID: 674623993}
+  - component: {fileID: 674623995}
+  - component: {fileID: 674623994}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1713,11 +1714,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 724389492}
-  - 222: {fileID: 724389494}
-  - 114: {fileID: 724389493}
+  - component: {fileID: 724389492}
+  - component: {fileID: 724389494}
+  - component: {fileID: 724389493}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -1787,12 +1788,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 791649135}
-  - 222: {fileID: 791649138}
-  - 114: {fileID: 791649137}
-  - 114: {fileID: 791649136}
+  - component: {fileID: 791649135}
+  - component: {fileID: 791649138}
+  - component: {fileID: 791649137}
+  - component: {fileID: 791649136}
   m_Layer: 5
   m_Name: Register_Button
   m_TagString: Untagged
@@ -1909,9 +1910,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 811661816}
+  - component: {fileID: 811661816}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -1944,12 +1945,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 833028833}
-  - 222: {fileID: 833028836}
-  - 114: {fileID: 833028835}
-  - 114: {fileID: 833028834}
+  - component: {fileID: 833028833}
+  - component: {fileID: 833028836}
+  - component: {fileID: 833028835}
+  - component: {fileID: 833028834}
   m_Layer: 5
   m_Name: User_Input
   m_TagString: Untagged
@@ -2078,11 +2079,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 850648496}
-  - 222: {fileID: 850648498}
-  - 114: {fileID: 850648497}
+  - component: {fileID: 850648496}
+  - component: {fileID: 850648498}
+  - component: {fileID: 850648497}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2152,10 +2153,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 915206360}
-  - 114: {fileID: 915206361}
+  - component: {fileID: 915206360}
+  - component: {fileID: 915206361}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -2233,12 +2234,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 926496790}
-  - 222: {fileID: 926496793}
-  - 114: {fileID: 926496792}
-  - 114: {fileID: 926496791}
+  - component: {fileID: 926496790}
+  - component: {fileID: 926496793}
+  - component: {fileID: 926496792}
+  - component: {fileID: 926496791}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -2315,11 +2316,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1043291177}
-  - 222: {fileID: 1043291179}
-  - 114: {fileID: 1043291178}
+  - component: {fileID: 1043291177}
+  - component: {fileID: 1043291179}
+  - component: {fileID: 1043291178}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -2389,11 +2390,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1045319824}
-  - 222: {fileID: 1045319826}
-  - 114: {fileID: 1045319825}
+  - component: {fileID: 1045319824}
+  - component: {fileID: 1045319826}
+  - component: {fileID: 1045319825}
   m_Layer: 5
   m_Name: Checkmark
   m_TagString: Untagged
@@ -2457,11 +2458,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1084772535}
-  - 114: {fileID: 1084772534}
-  - 114: {fileID: 1084772533}
+  - component: {fileID: 1084772535}
+  - component: {fileID: 1084772534}
+  - component: {fileID: 1084772533}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2519,12 +2520,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1105025576}
-  - 222: {fileID: 1105025579}
-  - 114: {fileID: 1105025578}
-  - 114: {fileID: 1105025577}
+  - component: {fileID: 1105025576}
+  - component: {fileID: 1105025579}
+  - component: {fileID: 1105025578}
+  - component: {fileID: 1105025577}
   m_Layer: 5
   m_Name: Pass_Input
   m_TagString: Untagged
@@ -2653,9 +2654,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1114511239}
+  - component: {fileID: 1114511239}
   m_Layer: 5
   m_Name: BannedUI
   m_TagString: Untagged
@@ -2688,11 +2689,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1247722226}
-  - 222: {fileID: 1247722228}
-  - 114: {fileID: 1247722227}
+  - component: {fileID: 1247722226}
+  - component: {fileID: 1247722228}
+  - component: {fileID: 1247722227}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2762,11 +2763,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1315333155}
-  - 222: {fileID: 1315333157}
-  - 114: {fileID: 1315333156}
+  - component: {fileID: 1315333155}
+  - component: {fileID: 1315333157}
+  - component: {fileID: 1315333156}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2831,11 +2832,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1343689945}
-  - 222: {fileID: 1343689947}
-  - 114: {fileID: 1343689946}
+  - component: {fileID: 1343689945}
+  - component: {fileID: 1343689947}
+  - component: {fileID: 1343689946}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2905,12 +2906,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1441007060}
-  - 223: {fileID: 1441007063}
-  - 114: {fileID: 1441007062}
-  - 114: {fileID: 1441007061}
+  - component: {fileID: 1441007060}
+  - component: {fileID: 1441007063}
+  - component: {fileID: 1441007062}
+  - component: {fileID: 1441007061}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3004,11 +3005,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1449164441}
-  - 222: {fileID: 1449164440}
-  - 114: {fileID: 1449164439}
+  - component: {fileID: 1449164441}
+  - component: {fileID: 1449164440}
+  - component: {fileID: 1449164439}
   m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
@@ -3072,12 +3073,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1634856360}
-  - 222: {fileID: 1634856363}
-  - 114: {fileID: 1634856362}
-  - 114: {fileID: 1634856361}
+  - component: {fileID: 1634856360}
+  - component: {fileID: 1634856363}
+  - component: {fileID: 1634856362}
+  - component: {fileID: 1634856361}
   m_Layer: 5
   m_Name: Re_Pass_Input
   m_TagString: Untagged
@@ -3206,13 +3207,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1704838333}
-  - 20: {fileID: 1704838332}
-  - 124: {fileID: 1704838331}
-  - 92: {fileID: 1704838330}
-  - 81: {fileID: 1704838329}
+  - component: {fileID: 1704838333}
+  - component: {fileID: 1704838332}
+  - component: {fileID: 1704838331}
+  - component: {fileID: 1704838330}
+  - component: {fileID: 1704838329}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -3293,11 +3294,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1716289866}
-  - 222: {fileID: 1716289868}
-  - 114: {fileID: 1716289867}
+  - component: {fileID: 1716289866}
+  - component: {fileID: 1716289868}
+  - component: {fileID: 1716289867}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3377,11 +3378,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1757958749}
-  - 222: {fileID: 1757958751}
-  - 114: {fileID: 1757958750}
+  - component: {fileID: 1757958749}
+  - component: {fileID: 1757958751}
+  - component: {fileID: 1757958750}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3451,12 +3452,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1778307135}
-  - 222: {fileID: 1778307138}
-  - 114: {fileID: 1778307136}
-  - 114: {fileID: 1778307137}
+  - component: {fileID: 1778307135}
+  - component: {fileID: 1778307138}
+  - component: {fileID: 1778307136}
+  - component: {fileID: 1778307137}
   m_Layer: 5
   m_Name: ServerState
   m_TagString: Untagged
@@ -3540,12 +3541,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1792784031}
-  - 222: {fileID: 1792784034}
-  - 114: {fileID: 1792784033}
-  - 114: {fileID: 1792784032}
+  - component: {fileID: 1792784031}
+  - component: {fileID: 1792784034}
+  - component: {fileID: 1792784033}
+  - component: {fileID: 1792784032}
   m_Layer: 5
   m_Name: User_Input
   m_TagString: Untagged
@@ -3674,11 +3675,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1796453331}
-  - 222: {fileID: 1796453330}
-  - 114: {fileID: 1796453329}
+  - component: {fileID: 1796453331}
+  - component: {fileID: 1796453330}
+  - component: {fileID: 1796453329}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3743,10 +3744,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1806548925}
-  - 111: {fileID: 1806548926}
+  - component: {fileID: 1806548925}
+  - component: {fileID: 1806548926}
   m_Layer: 5
   m_Name: Register
   m_TagString: Untagged
@@ -3799,11 +3800,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1863652826}
-  - 222: {fileID: 1863652828}
-  - 114: {fileID: 1863652827}
+  - component: {fileID: 1863652826}
+  - component: {fileID: 1863652828}
+  - component: {fileID: 1863652827}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -3873,12 +3874,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1975655809}
-  - 222: {fileID: 1975655812}
-  - 114: {fileID: 1975655811}
-  - 114: {fileID: 1975655810}
+  - component: {fileID: 1975655809}
+  - component: {fileID: 1975655812}
+  - component: {fileID: 1975655811}
+  - component: {fileID: 1975655810}
   m_Layer: 5
   m_Name: Pass_Input
   m_TagString: Untagged
@@ -4007,11 +4008,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2042545956}
-  - 222: {fileID: 2042545958}
-  - 114: {fileID: 2042545957}
+  - component: {fileID: 2042545956}
+  - component: {fileID: 2042545958}
+  - component: {fileID: 2042545957}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -4081,11 +4082,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2090711534}
-  - 222: {fileID: 2090711536}
-  - 114: {fileID: 2090711535}
+  - component: {fileID: 2090711534}
+  - component: {fileID: 2090711536}
+  - component: {fileID: 2090711535}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged

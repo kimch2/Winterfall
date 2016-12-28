@@ -10,11 +10,10 @@ public class Screenshot : MonoBehaviour
 
     void Start ()
     {
-        if (!Directory.Exists(Application.dataPath + "/Screenshots"))
+        if (!Directory.Exists(Application.persistentDataPath + "/Screenshots"))
         {
             //if it doesn't, create it
-            Directory.CreateDirectory(Application.dataPath + "/Screenshots");
-
+            Directory.CreateDirectory(Application.persistentDataPath + "/Screenshots");
         }
     }
 
@@ -43,14 +42,15 @@ public class Screenshot : MonoBehaviour
         float time = Time.deltaTime;
 
         // save our test image (could also upload to WWW)
-        File.WriteAllBytes(Application.dataPath + "/Screenshots/screenshot-" + count + "-" + time + ".png", bytes);
+        File.WriteAllBytes(Application.persistentDataPath + "/Screenshots/screenshot-" + count + "-" + time + ".png", bytes);
         count++;
 
         // Added by Karl. - Tell unity to delete the texture, by default it seems to keep hold of it and memory crashes will occur after too many screenshots.
         DestroyObject(texture);
 
         //Debug.Log("Screenshot saved to: " + Application.dataPath + "/Screenshots/screenshot-" + count + ".png");
-        StartCoroutine(Notifications.Call("Screenshot saved to: " + "/Screenshots/screenshot-" + count + "-" + time + ".png"));
+        //StartCoroutine(Notifications.Call("Screenshot saved to: " + "/Screenshots/screenshot-" + count + "-" + time + ".png"));
+        print("Screenshot saved to: " + Application.persistentDataPath + "/Screenshots/screenshot-" + count + "-" + time + ".png");
         sound.Play();
     }
 }

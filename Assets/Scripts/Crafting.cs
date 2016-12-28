@@ -10,20 +10,20 @@ public class Crafting : MonoBehaviour
     public GameObject icon;
     private bool crafting = false;
 
+    public GameObject craftingGameObject;
+
     [System.Serializable]
     public class CraftingClass
     {
         public string name;
         public Button btn;
         public bool unlocked;
-        public int tier;
 
-        public CraftingClass(string name, Button btn, bool unlocked, int tier)
+        public CraftingClass(string name, Button btn, bool unlocked)
         {
             this.name = name;
             this.btn = btn;
             this.unlocked = unlocked;
-            this.tier = tier;
         }
     }
 
@@ -31,26 +31,44 @@ public class Crafting : MonoBehaviour
 
     void Start()
     {
-        //LVL 1
-        craftItems.Add(new CraftingClass("Planks", null, true, 0)); // 0
-        craftItems.Add(new CraftingClass("Hatchet", null, true, 0)); // 1
-        craftItems.Add(new CraftingClass("Pickaxe", null, true, 0)); // 2
-        craftItems.Add(new CraftingClass("Crafting_Table", null, true, 0)); // 3
-        craftItems.Add(new CraftingClass("Campfire", null, true, 0)); // 4
-        craftItems.Add(new CraftingClass("Canteen", null, true, 0)); // 5
+        //TIER 1
+        craftItems.Add(new CraftingClass("Planks", null, true)); // 0
+        craftItems.Add(new CraftingClass("Hatchet", null, true)); // 1
+        craftItems.Add(new CraftingClass("Pickaxe", null, true)); // 2
+        craftItems.Add(new CraftingClass("Crafting_Table", null, true)); // 3
+        craftItems.Add(new CraftingClass("Campfire", null, true)); // 4
+        craftItems.Add(new CraftingClass("Canteen", null, true)); // 5
 
-        //LVL 2
-        craftItems.Add(new CraftingClass("Foundation", null, true, 1)); // 6
-        craftItems.Add(new CraftingClass("Pillar", null, true, 1)); // 7
-        craftItems.Add(new CraftingClass("Wall", null, true, 1)); // 8
-        craftItems.Add(new CraftingClass("Doorway", null, true, 1)); // 9
-        craftItems.Add(new CraftingClass("Door", null, true, 1)); // 10
-        craftItems.Add(new CraftingClass("Stairs", null, true, 1)); // 11
-        craftItems.Add(new CraftingClass("Ceiling", null, true, 1)); // 12
-        craftItems.Add(new CraftingClass("Window", null, true, 1)); // 13
-        craftItems.Add(new CraftingClass("Roof", null, true, 1)); // 14
-        craftItems.Add(new CraftingClass("Bed", null, true, 1)); // 15
-        craftItems.Add(new CraftingClass("Flashlight", null, true, 1)); // 16
+        //TIER 2
+        craftItems.Add(new CraftingClass("Foundation", null, false)); // 6
+        craftItems.Add(new CraftingClass("Pillar", null, false)); // 7
+        craftItems.Add(new CraftingClass("Wall", null, false)); // 8
+        craftItems.Add(new CraftingClass("Doorway", null, false)); // 9
+        craftItems.Add(new CraftingClass("Door", null, false)); // 10
+        craftItems.Add(new CraftingClass("Stairs", null, false)); // 11
+        craftItems.Add(new CraftingClass("Ceiling", null, false)); // 12
+        craftItems.Add(new CraftingClass("Window", null, false)); // 13
+        craftItems.Add(new CraftingClass("Roof", null, false)); // 14
+        craftItems.Add(new CraftingClass("Bed", null, false)); // 15
+        craftItems.Add(new CraftingClass("Flashlight", null, false)); // 16
+
+        for (int i = 0; i < craftItems.Count; i++)
+        {
+            Button itemButton = craftingGameObject.transform.GetChild(i).gameObject.GetComponent<Button>();
+            craftItems[i].btn = itemButton;
+        }
+
+        foreach (CraftingClass crft in craftItems)
+        {
+            if (crft.unlocked)
+            {
+                crft.btn.interactable = true;
+            }
+            else
+            {
+                crft.btn.interactable = false;
+            }
+        }
     }
 
     //Tier 1 Crafting

@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     public GameObject smeltingPanel;
     public GameObject craftingPanel;
     public GameObject inventoryGameObject;
-    public GameObject craftingGameObject;
 
     public int craftingTier;
 
@@ -39,11 +38,11 @@ public class Inventory : MonoBehaviour
     public int xp;
     public Text levelText;
 
-    public GameObject[] equippedObjects;
+    public GameObject[] equipables;
 
     //public Transform invWindow;
 
-    void Start()
+    private void Start()
     {
         //inventoryPanel = GameObject.FindGameObjectWithTag("InventoryItem");
         inventoryPanel.gameObject.SetActive(true);
@@ -89,12 +88,6 @@ public class Inventory : MonoBehaviour
             items[i].text = itemText;
         }
 
-        for (int i = 0; i < craftingScript.craftItems.Count; i++)
-        {
-            Button itemButton = craftingGameObject.transform.GetChild(i).gameObject.GetComponent<Button>();
-            craftingScript.craftItems[i].btn = itemButton;
-        }
-
         inventoryPanel.gameObject.SetActive(false);
     }
 
@@ -103,37 +96,37 @@ public class Inventory : MonoBehaviour
     {
         if (itemID == 0) //Hatchet
         {
-            if (items[15].item >= 1 && equippedObjects[itemID].activeSelf == false)
+            if (items[15].item >= 1 && equipables[itemID].activeSelf == false)
             {
                 UnequipAll();
-                equippedObjects[itemID].SetActive(true);
+                equipables[itemID].SetActive(true);
             }
         }
 
         else if (itemID == 1) //Pickaxe
         {
-            if (items[16].item >= 1 && equippedObjects[itemID].activeSelf == false)
+            if (items[16].item >= 1 && equipables[itemID].activeSelf == false)
             {
                 UnequipAll();
-                equippedObjects[itemID].SetActive(true);
+                equipables[itemID].SetActive(true);
             }
         }
 
         else if (itemID == 2) //Flashlight
         {
-            if (items[17].item >= 1 && equippedObjects[itemID].activeSelf == false)
+            if (items[17].item >= 1 && equipables[itemID].activeSelf == false)
             {
                 UnequipAll();
-                equippedObjects[itemID].SetActive(true);
+                equipables[itemID].SetActive(true);
             }
         }
 
         else if (itemID == 3) //Torch
         {
-            if (items[31].item >= 1 && equippedObjects[itemID].activeSelf == false)
+            if (items[31].item >= 1 && equipables[itemID].activeSelf == false)
             {
                 UnequipAll();
-                equippedObjects[itemID].SetActive(true);
+                equipables[itemID].SetActive(true);
             }
         }
     }
@@ -410,11 +403,11 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    void Update()
+    private void Update()
     {
         levelText.text = "XP: " + xp;
 
-        if (equippedObjects[2].activeSelf)
+        if (equipables[2].activeSelf)
         {
             items[17].item -= (int)Time.deltaTime / 2;
         }
@@ -442,19 +435,12 @@ public class Inventory : MonoBehaviour
             foreach (ItemsClass itm in items) itm.text.text = itm.item.ToString();
             craftingTier = 0;
             HideHUD.Hide();
-            foreach (Crafting.CraftingClass crft in craftingScript.craftItems)
-            {
-                if (crft.tier == 1)
-                {
-                    crft.btn.interactable = false;
-                }
-            }
         }
     }
 
     void UnequipAll()
     {
-        foreach (GameObject objct in equippedObjects)
+        foreach (GameObject objct in equipables)
         {
             objct.SetActive(false);
         }
@@ -494,6 +480,7 @@ public class Inventory : MonoBehaviour
             craftingPanel.SetActive(true);
             inventoryPanel.SetActive(true);
             craftingTier = 1;
+            /*
             foreach (Crafting.CraftingClass crft in craftingScript.craftItems)
             {
                 if (crft.tier == 1)
@@ -501,6 +488,7 @@ public class Inventory : MonoBehaviour
                     crft.btn.interactable = true;
                 }
             }
+            */
         }
     }
     #endregion          

@@ -7,7 +7,7 @@ public class BushController : MonoBehaviour
     Inventory inv;
     public Texture[] textures;
     Renderer rend;
-    private bool isMature;
+    public bool isMature;
 
     void Start()
     {

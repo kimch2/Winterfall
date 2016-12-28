@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
+using System.Xml;
 
 public class SaveLoad : MonoBehaviour {
 
@@ -7,31 +9,19 @@ public class SaveLoad : MonoBehaviour {
 
     public void Save()
     {
-        //Player
+        if (!Directory.Exists(Application.persistentDataPath + "/Saves"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/Saves");
+        }
+
+        /* Player */
         PlayerPrefsX.SetVector3("PlayerPosition", transform.position);
         //PlayerPrefsX.SetVector3("PlayerRotation", transform.eulerAngles);
 
-        //Inventory
-        /*
-        PlayerPrefs.SetInt("Logs", invScript.logs);
-        PlayerPrefs.SetInt("Stone", invScript.stone);
-        PlayerPrefs.SetInt("Flint", invScript.flint);
-        PlayerPrefs.SetInt("Metal", invScript.metal);
-        PlayerPrefs.SetInt("DuctTape", invScript.ductTape);
-        PlayerPrefs.SetInt("Planks", invScript.planks);
-        PlayerPrefs.SetInt("Can", invScript.can);
-        PlayerPrefs.SetInt("Canteen", invScript.canteen);
-        PlayerPrefs.SetInt("IronOre", invScript.ironOre);
-        PlayerPrefs.SetInt("Apple", invScript.apple);
-        PlayerPrefs.SetInt("Pills", invScript.pills);
-        PlayerPrefs.SetInt("CannedBeans", invScript.cannedBeans);
-        PlayerPrefs.SetInt("CanteenWater", invScript.canteenWater);
-        */
-
+        /* Items */
         foreach (Inventory.ItemsClass item in invScript.items)
         {
             PlayerPrefs.SetInt("Item-" + item.name, item.item);
-            Debug.Log("Save Item-" + item.name + " - " + item.item);
         }
 
         StartCoroutine(Notifications.Call("Saved."));
