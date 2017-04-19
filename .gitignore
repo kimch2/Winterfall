@@ -55,6 +55,7 @@ Temporary Items
 /[Ll]ibrary/
 sysinfo.txt
 *.stackdump
+*.meta
  
 # ============================================= #
 # Visual Studio / MonoDevelop / Rider generated #
