@@ -42,6 +42,7 @@ TagManager:
   - RoofPos
   - Manager
   - InventoryItem
+  - Sky
   layers:
   - Default
   - TransparentFX

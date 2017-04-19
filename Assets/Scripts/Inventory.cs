@@ -12,9 +12,9 @@ public class Inventory : MonoBehaviour
 
     public int craftingTier;
 
-    public Stats stats;
+    private Stats stats;
     public Building buildingScript;
-    public Crafting craftingScript;
+    private Crafting craftingScript;
 
     [System.Serializable]
     public class ItemsClass
@@ -44,6 +44,9 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        stats = gameObject.GetComponent<Stats>();
+        craftingScript = gameObject.GetComponent<Crafting>();
+
         //inventoryPanel = GameObject.FindGameObjectWithTag("InventoryItem");
         inventoryPanel.gameObject.SetActive(true);
         items.Clear();
@@ -428,6 +431,17 @@ public class Inventory : MonoBehaviour
         if (inventoryPanel.activeSelf) CloseAllWindows();
         else
         {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if(items[i].item > 0)
+                {
+                    items[i].text.transform.parent.gameObject.SetActive(true);
+                }
+                else
+                {
+                    items[i].text.transform.parent.gameObject.SetActive(false);
+                }
+            }
             inventoryPanel.SetActive(true);
             craftingPanel.SetActive(true);
             foreach (Building.BuildingsClass build in buildingScript.buildings) build.key = false;

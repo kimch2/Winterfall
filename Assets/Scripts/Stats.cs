@@ -5,11 +5,9 @@ using UnityEngine.UI;
 public class Stats : MonoBehaviour
 {
 
-    public TOD_Sky sky;
+    private TOD_Sky sky;
     public GameObject deathPanel;
     public GameObject damagePanel;
-
-    public float air;
 
     [Header("Health")]
     public Slider healthSlider;
@@ -29,6 +27,10 @@ public class Stats : MonoBehaviour
     public float thirst;
     public float thirstSaturation;
 
+    [Header("Air")]
+    public float air;
+    public float waterLevel;
+
     [Header("Temperature")]
     public Text temperatureText;
     public float temperature;
@@ -46,6 +48,7 @@ public class Stats : MonoBehaviour
 
     void Start()
     {
+        sky = GameObject.FindGameObjectWithTag("Sky").GetComponent<TOD_Sky>();
         InvokeRepeating("Refresh", 0, 3);
         //InvokeRepeating("Temperature", 2, 1000);
     }
@@ -129,7 +132,7 @@ public class Stats : MonoBehaviour
 
         /* AIR CONTROL SECTION*/
 
-        if (transform.position.y <= 15)
+        if (transform.position.y <= waterLevel)
         {
             if (air > 0)
             {

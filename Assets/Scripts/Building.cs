@@ -19,10 +19,16 @@ public class Building : MonoBehaviour
 
     public LayerMask myLayerMask;
 
-    public GameObject player;
-    public Inventory inv;
+    private GameObject player;
+    private Inventory inv;
 
     public int maxBuildDistance;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        inv = player.GetComponent<Inventory>();
+    }
 
     void Update()
     {

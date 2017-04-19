@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Cheats : MonoBehaviour {
 
-    public Inventory inv;
-    public Stats statsScript;
+    private Inventory inv;
+    private Stats statsScript;
     public GameObject inputField;
     private InputField input;
 
@@ -32,8 +32,11 @@ public class Cheats : MonoBehaviour {
 
     void Start ()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        statsScript = player.GetComponent<Stats>();
+        inv = player.GetComponent<Inventory>();
+       
         input = inputField.GetComponent<InputField>();
-
         input.onEndEdit.AddListener(SubmitName);
     }
 
